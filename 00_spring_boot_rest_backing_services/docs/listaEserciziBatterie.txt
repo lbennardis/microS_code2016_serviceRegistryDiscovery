@@ -1,0 +1,11 @@
+Libia	STAZ001	Viale Libia 200		
+Nomentana	STAZ002	Via Nomentana 41		
+Villini	STAZ003	Via dei Villini 1		
+Bologna	STAZ004	Piazza Bologna 5		
+Fiori	STAZ005	Via Adriano Fiori 16		
+Romania	STAZ006	Piazza Romania 1		
+Muse	STAZ007	Piazza delle Muse 2		
+Parioli	STAZ008	Viale Parioli 140		
+Italia	STAZ009	Corso d'Italia 100		
+Fiscali	STAZ010	Via dei Prati Fiscali 150		
+Vimercati	STAZ011	Piazza Vimercati 1		
