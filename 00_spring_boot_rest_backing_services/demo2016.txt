@@ -1,0 +1,243 @@
+﻿https://github.com/spring-cloud-samples/feign-eureka
+
+https://github.com/spring-cloud-samples/eureka
+https://jmnarloch.wordpress.com/2015/08/19/spring-cloud-designing-feign-client/
+
+
+
+http://luigi-pc:7211/
+
+
+http://luigi-pc:7111/LUIGI/giocatore
+
+
+CONFIGURAZIONE SSH PER OPENSHIFT
+https://developers.openshift.com/en/managing-remote-connection.html
+
+
+PUTTY OPENSHIFT JENKINS PASSPRASE musicalbox
+
+
+[jenkins-cienv.rhcloud.com jenkins]\> cd /var/lib/openshift/566ae57d0c1e6629760000cd/app-root/data/
+[jenkins-cienv.rhcloud.com data]\> ls
+cache
+config.xml
+Connection Activity monitoring to slaves.log
+credentials.xml
+Download metadata.log
+Fingerprint cleanup.log
+hudson.maven.MavenModuleSet.xml
+hudson.model.UpdateCenter.xml
+hudson.plugins.git.GitSCM.xml
+hudson.plugins.git.GitTool.xml
+hudson.scm.CVSSCM.xml
+hudson.scm.SubversionSCM.xml
+hudson.tasks.Ant.xml
+hudson.tasks.Mailer.xml
+hudson.tasks.Maven.xml
+hudson.tasks.Shell.xml
+hudson.tools.JDKInstaller.xml
+hudson.triggers.SCMTrigger.xml
+identity.key.enc
+jdk
+jenkins.model.ArtifactManagerConfiguration.xml
+jenkins.model.DownloadSettings.xml
+jenkins.model.JenkinsLocationConfiguration.xml
+jenkins.mvn.GlobalMavenConfig.xml
+jenkins.security.QueueItemAuthenticatorConfiguration.xml
+jobs
+maven
+nodeMonitors.xml
+nodes
+org.jenkinsci.main.modules.sshd.SSHD.xml
+org.jenkinsci.plugins.gitclient.JGitTool.xml
+plugins
+queue.xml.bak
+secret.key
+secret.key.not-so-secret
+secrets
+tools
+updates
+userContent
+users
+war
+Workspace clean-up.log
+[jenkins-cienv.rhcloud.com data]\> cd maven/apache-maven-3.3.3
+[jenkins-cienv.rhcloud.com apache-maven-3.3.3]\> ls
+bin  boot  conf  lib  LICENSE  NOTICE  README.txt
+[jenkins-cienv.rhcloud.com apache-maven-3.3.3]\> echo $ITEM_ROOTDIR
+
+[jenkins-cienv.rhcloud.com apache-maven-3.3.3]\> echo ${ITEM_ROOTDIR}/workspace
+/workspace
+[jenkins-cienv.rhcloud.com apache-maven-3.3.3]\> cd workspaces
+bash: cd: workspaces: No such file or directory
+[jenkins-cienv.rhcloud.com apache-maven-3.3.3]\>
+
+
+
+
+
+
+${ITEM_ROOTDIR}/workspace build
+
+build path 
+
+/var/lib/openshift/566ae57d0c1e6629760000cd/app-root/data/jobs/buildtestMaven/build/7
+
+path project 
+
+/var/lib/openshift/566ae57d0c1e6629760000cd/app-root/data/wkspacejenkins/pom.xml, line 142, column 17
+
+
+
+
+ssh://566ae57d0c1e6629760000cd@jenkins-cienv.rhcloud.com/~/git/jenkins.git/
+
+
+[ERROR] 'build.plugins.plugin[com.github.github:site-maven-plugin].executions.execution.id'
+ must be unique but found duplicate execution with id default 
+ @ rest-backing-services:rest-backing-services:[unknown-version], /var/lib/openshift/566ae57d0c1e6629760000cd/app-root/data/wkspacejenkins/pom.xml, line 142, column 17
+
+	at org.apache.maven.project.DefaultProjectBuilder.build(DefaultProjectBuilder.java:422)
+	at org.apache.maven.graph.DefaultGraphBuilder.collectProjects(DefaultGraphBuilder.java:419)
+	at org.apache.maven.graph.DefaultGraphBuilder.getProjectsForMavenReactor(DefaultGraphBuilder.java:410)
+	at org.apache.maven.graph.DefaultGraphBuilder.build(DefaultGraphBuilder.java:83)
+	at org.apache.maven.DefaultMaven.buildGraph(DefaultMaven.java:491)
+	at org.apache.maven.DefaultMaven.doExecute(DefaultMaven.java:219)
+	at org.apache.maven.DefaultMaven.doExecute(DefaultMaven.java:193)
+	at org.apache.maven.DefaultMaven.execute(DefaultMaven.java:106)
+	at org.apache.maven.cli.MavenCli.execute(MavenCli.java:862)
+	at org.apache.maven.cli.MavenCli.doMain(MavenCli.java:286)
+	at org.apache.maven.cli.MavenCli.main(MavenCli.java:197)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.codehaus.plexus.classworlds.launcher.Launcher.launchEnhanced(Launcher.java:289)
+	at org.codehaus.plexus.classworlds.launcher.Launcher.launch(Launcher.java:229)
+	at org.codehaus.plexus.classworlds.launcher.Launcher.mainWithExitCode(Launcher.java:415)
+	at org.codehaus.plexus.classworlds.launcher.Launcher.main(Launcher.java:356)
+	
+	
+	
+	
+	
+	
+	
+The following variables are available to shell scripts
+
+BUILD_NUMBER
+The current build number, such as "153"
+BUILD_ID
+The current build ID, identical to BUILD_NUMBER for builds created in 1.597+, but a YYYY-MM-DD_hh-mm-ss timestamp for older builds
+BUILD_DISPLAY_NAME
+The display name of the current build, which is something like "#153" by default.
+JOB_NAME
+Name of the project of this build, such as "foo" or "foo/bar". (To strip off folder paths from a Bourne shell script, try: ${JOB_NAME##*/})
+BUILD_TAG
+String of "jenkins-${JOB_NAME}-${BUILD_NUMBER}". Convenient to put into a resource file, a jar file, etc for easier identification.
+EXECUTOR_NUMBER
+The unique number that identifies the current executor (among executors of the same machine) that’s carrying out this build. This is the number you see in the "build executor status", except that the number starts from 0, not 1.
+NODE_NAME
+Name of the slave if the build is on a slave, or "master" if run on master
+NODE_LABELS
+Whitespace-separated list of labels that the node is assigned.
+WORKSPACE
+The absolute path of the directory assigned to the build as a workspace.
+JENKINS_HOME
+The absolute path of the directory assigned on the master node for Jenkins to store data.
+JENKINS_URL
+Full URL of Jenkins, like http://server:port/jenkins/ (note: only available if Jenkins URL set in system configuration)
+BUILD_URL
+Full URL of this build, like http://server:port/jenkins/job/foo/15/ (Jenkins URL must be set)
+JOB_URL
+Full URL of this job, like http://server:port/jenkins/job/foo/ (Jenkins URL must be set)
+SVN_REVISION
+Subversion revision number that's currently checked out to the workspace, such as "12345"
+SVN_URL
+Subversion URL that's currently checked out to the workspace.
+
+
+
+
+
+/var/lib/openshift/566ae57d0c1e6629760000cd/app-root/data/.m2/rest-backing-services/rest-backing-services/1.2.1.RELEASE/
+
+
+[DEBUG] Using 'github' server credentials
+[DEBUG] Using basic authentication with username: l.bennardis@email.it
+[DEBUG] Creating blob from /var/lib/openshift/566ae57d0c1e6629760000cd/app-root/data/buildjenkins/mvn-repo/rest-backing-services/rest-backing-services/1.2.1.RELEASE/rest-backing-services-1.2.1.RELEASE.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 11.774 s
+[INFO] Finished at: 2016-02-14T08:54:20-05:00
+[INFO] Final Memory: 16M/154M
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal com.github.github:site-maven-plugin:0.12:site (default) on project rest-backing-services: Error creating blob: cannot retry due to server authentication, in streaming mode -> [Help 1]
+org.apache.maven.lifecycle.LifecycleExecutionException: Failed to execute goal com.github.github:site-maven-plugin:0.12:site (default) on project rest-backing-services: Error creating blob: cannot retry due to server authentication, in streaming mode
+	at org.apache.maven.lifecycle.internal.MojoExecutor.execute(MojoExecutor.java:216)
+	at org.apache.maven.lifecycle.internal.MojoExecutor.execute(MojoExecutor.java:153)
+	at org.
+	
+	
+	
+WORKSPACE EUREKA-REGISTRY-DISCOVERY (02-03-04)
+
+C:\development\workspaces\spring-boot-cloud-eureka
+
+WORKSPACE 01 
+C:\development\workspaces\wks01
+
+PIVOTAL
+l.bennardis@email.it
+2Theknife.
+
+GITHUB
+musical1.
+
+http://www.javacodegeeks.com/2014/10/spring-boot-and-spring-data-rest-exposing-repositories-over-rest.html
+http://www.javabeat.net/spring-data-jpa/
+
+
+
+
+@RestController
+class UserController {
+
+    @RequestMapping("/listaUtenti")
+    public String greeting(@RequestParam(value="name", defaultValue="World") String name) {
+        return "Lista utenti";
+    }
+}
+
+
+
+
+
+
+
+DOCKER MYSQL 
+ http://txt.fliglio.com/2013/11/creating-a-mysql-docker-container/
+http://blog.arungupta.me/wildfly-javaee7-mysql-link-two-docker-container-techtip65/
+
+https://github.com/arun-gupta/docker-images/tree/master/wildfly-mysql-javaee7
+
+https://www.ctl.io/developers/blog/post/build-a-2-container-app-with-docker/
+	
+
+https://docs.oracle.com/cd/E52668_01/E54669/html/section_rsr_p2z_fp.html
+
+
+http://planet.jboss.org/post/9_docker_recipes_for_java_ee_applications_tech_tip_80
+
+
+http://planet.jboss.org/post/9_docker_recipes_for_java_ee_applications_tech_tip_80
+http://blog.arungupta.me/wildfly-javaee7-mysql-link-two-docker-container-techtip65/
+
+http://planet.jboss.org/post/9_docker_recipes_for_java_ee_applications_tech_tip_80
+
+
+https://www.jiwhiz.com/blogs/Spring_Boot_Docker_MySQL_Demo
+
+https://docs.docker.com/engine/userguide/networking/default_network/dockerlinks/#connect-with-the-linking-system

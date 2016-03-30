@@ -1,0 +1,31 @@
+Clint;Eastwood
+Jack;Nicholson
+Antonio;Banderas
+Anthony;Hopkins
+Brad;Pitt
+Bruce;Willis
+Michael;Caine
+Nicolas;Cage
+Johnny;Depp
+Jude;Law
+Kevin;Costner
+Kevin;Spacey
+Tom;Cruise
+Tom;Hanks
+
+
+
+INSERT INTO Utenti(id,nome,cognome) VALUES (1,'Clint','Eastwood');
+INSERT INTO Utenti(id,nome,cognome) VALUES (2,'Jack','Nicholson');
+INSERT INTO Utenti(id,nome,cognome) VALUES (3,'Antonio','Banderas');
+INSERT INTO Utenti(id,nome,cognome) VALUES (4,'Anthony','Hopkins');
+INSERT INTO Utenti(id,nome,cognome) VALUES (5,'Brad','Pitt');
+INSERT INTO Utenti(id,nome,cognome) VALUES (6,'Bruce','Willis');
+INSERT INTO Utenti(id,nome,cognome) VALUES (7,'Michael','Caine');
+INSERT INTO Utenti(id,nome,cognome) VALUES (8,'Nicolas','Cage');
+INSERT INTO Utenti(id,nome,cognome) VALUES (9,'Johnny','Depp');
+INSERT INTO Utenti(id,nome,cognome) VALUES (10,'Jude','Law');
+INSERT INTO Utenti(id,nome,cognome) VALUES (11,'Kevin','Costner');
+INSERT INTO Utenti(id,nome,cognome) VALUES (12,'Kevin','Spacey');
+INSERT INTO Utenti(id,nome,cognome) VALUES (13,'Tom','Cruise');
+INSERT INTO Utenti(id,nome,cognome) VALUES (14,'Tom','Hanks');

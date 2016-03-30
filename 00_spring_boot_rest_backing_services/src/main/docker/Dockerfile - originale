@@ -1,0 +1,6 @@
+FROM java:8
+MAINTAINER l.bennardis@email.it
+VOLUME /tmp
+ADD //@NOME_JAR@ app.jar
+RUN bash -c 'touch /app.jar'
+ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar"]
