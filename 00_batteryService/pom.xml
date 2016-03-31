@@ -15,8 +15,9 @@
     
        
 
-    <groupId>io.pivotal</groupId>
-    <artifactId>pong-matcher-spring</artifactId>
+    <groupId>luigibennardis</groupId>
+    <!-- <groupId>io.pivotal</groupId>-->
+    <artifactId>00-batteryService</artifactId>
     <version>1.0.0.BUILD-SNAPSHOT</version>
     <packaging>jar</packaging>
 
@@ -28,7 +29,7 @@
 <!-- code_snippet gsg-spring-s3 start -->
 
     <dependencies>
-    
+    	
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>

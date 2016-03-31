@@ -1,12 +1,12 @@
 ---
 applications:
-  - name: 01-springpong
+  - name: 00-batteryService
     memory: 1024M
     instances: 1
     buildpack: java_buildpack
-    host: 01-spring-boot-rest-backing-services
+    host: 00-batteryService
     domain: cfapps.io
-    path: target/pong-matcher-spring-1.0.0.BUILD-SNAPSHOT.jar
+    path: target/00-batteryService.jar
     services:
      - mySqlBackingServices
     datasource:
