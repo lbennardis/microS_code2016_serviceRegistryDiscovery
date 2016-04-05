@@ -35,14 +35,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.jdbc.datasource.SimpleDriverDataSource;
 
-
-//@SpringBootApplication
-//@EnableDiscoveryClient
-
-//@ComponentScan
-//@Configuration
-//@EnableAutoConfiguration
-
 @SpringBootApplication
 @EnableDiscoveryClient //***AGGIUNTO PER EUREKA
 public class Application {
