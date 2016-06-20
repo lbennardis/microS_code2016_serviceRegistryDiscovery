@@ -1,3 +1,5 @@
+1) Creazione DATABASE e load dati
+
 use testJdom;
 create table testuser (
        userId           char(20) not null,
@@ -21,3 +23,23 @@ CREATE TABLE upload (
   PRIMARY KEY  (objectId),
   KEY messageId (messageId)
 )
+
+2) DEFINIZIONE DATASOURCE
+Sul file: C:\runtime\apache-tomcat-8.0.36\conf\context.xml
+
+inserire il fragment che definisce del datasource che viene risolto da web.xml
+<Context>
+.....
+.....
+<Resource name="jdbc/TestDS" auth="Container" type="javax.sql.DataSource"
+               maxTotal="100" maxIdle="30" maxWaitMillis="10000"
+               username="root" password="root" driverClassName="com.mysql.jdbc.Driver"
+               url="jdbc:mysql://localhost:3306/testjdom"/>
+			   
+</Context>
+
+3) DEFINIZIONE DATASOURCE
+
+copiare al percorso C:\runtime\apache-tomcat-8.0.36\lib la libreria driver JDBC 
+per MYsql: mysql-connector-java-5.1.38-bin.jar
+
