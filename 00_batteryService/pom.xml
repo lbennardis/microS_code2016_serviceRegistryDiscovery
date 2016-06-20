@@ -24,8 +24,9 @@
     </properties>
  
 
-<!-- AGGIUNTO PER EUREKA -->
+
     <repositories>
+    	<!-- AGGIUNTO PER EUREKA -->
         <repository>
             <id>repo.spring.io-milestones</id>
             <name>repo.spring.io-milestones</name>
@@ -39,8 +40,30 @@
                 <enabled>true</enabled>
             </snapshots>
         </repository>
+        
+        <!-- FINE AGGIUNTO PER EUREKA --> 
+        
+        
+        <!-- AGGIUNTO PER JDOM -->
+		<repository>
+			<id>jdonmvc-core</id>
+			<url>https://github.com/banq/jdon-mvn-repo/raw/master/releases</url>
+		</repository>  
+		
+		<repository>
+			<id>jdonframework</id>
+			<url>https://github.com/banq/jdon-mvn-repo/raw/master/releases</url>
+		</repository>    
+		
+		<repository>
+			<id>jdon-jdbc</id>
+			<url>https://github.com/banq/jdon-mvn-repo/raw/master/releases</url>
+		</repository>
+  		<!-- FINE AGGIUNTO PER JDOM --> 
+        
+        
     </repositories>
-<!-- FINE AGGIUNTO PER EUREKA -->   
+  
     
 <!-- AGGIUNTO PER EUREKA -->
     <pluginRepositories>
@@ -71,6 +94,24 @@
 		</dependency>
 		<!-- FINE AGGIUNTO PER EUREKA -->   
 		
+		
+		<!-- AGGIUNTO PER JDOM -->
+		<dependency>
+	        <groupId>org.jdon</groupId>
+	        <artifactId>jdonframework</artifactId>
+	        <version>6.8</version>
+	        
+	     </dependency>    
+     
+	     <dependency>
+	        <groupId>com.jdon</groupId>
+	        <artifactId>jdon-jdbc</artifactId>
+	        <version>6.6.4</version>
+	     </dependency>  
+	     <!-- FINE AGGIUNTO PER JDOM -->
+     
+     
+     
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
