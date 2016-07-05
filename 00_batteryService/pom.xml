@@ -44,22 +44,7 @@
         <!-- FINE AGGIUNTO PER EUREKA --> 
         
         
-        <!-- AGGIUNTO PER JDOM -->
-		<repository>
-			<id>jdonmvc-core</id>
-			<url>https://github.com/banq/jdon-mvn-repo/raw/master/releases</url>
-		</repository>  
-		
-		<repository>
-			<id>jdonframework</id>
-			<url>https://github.com/banq/jdon-mvn-repo/raw/master/releases</url>
-		</repository>    
-		
-		<repository>
-			<id>jdon-jdbc</id>
-			<url>https://github.com/banq/jdon-mvn-repo/raw/master/releases</url>
-		</repository>
-  		<!-- FINE AGGIUNTO PER JDOM --> 
+        
         
         
     </repositories>
@@ -78,41 +63,30 @@
     </pluginRepositories>
 <!-- FINE AGGIUNTO PER EUREKA -->  
   
+  
+  
+  <dependencyManagement>
     <dependencies>
-    	
-    	<!-- AGGIUNTO PER EUREKA -->
-    	<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-feign</artifactId>
-			<version>1.0.6.RELEASE</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-eureka</artifactId>
-			<version>1.0.6.RELEASE</version>
-		</dependency>
-		<!-- FINE AGGIUNTO PER EUREKA -->   
-		
-		
-		<!-- AGGIUNTO PER JDOM -->
-		<dependency>
-	        <groupId>org.jdon</groupId>
-	        <artifactId>jdonframework</artifactId>
-	        <version>6.8</version>
-	        
-	     </dependency>    
-     
-	     <dependency>
-	        <groupId>com.jdon</groupId>
-	        <artifactId>jdon-jdbc</artifactId>
-	        <version>6.6.4</version>
-	     </dependency>  
-	     <!-- FINE AGGIUNTO PER JDOM -->
-     
-     
-     
         <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-stream-dependencies</artifactId>
+            <version>1.0.2.RELEASE</version>
+            <type>pom</type>
+            <scope>import</scope>
+        </dependency>
+    </dependencies>
+</dependencyManagement>
+<dependencies>
+    <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-stream</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-starter-stream-kafka</artifactId>
+    </dependency>
+    
+    <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
         </dependency>
@@ -171,7 +145,19 @@
         	<artifactId>neo4j-cypher-compiler-2.1</artifactId>
         	<version>2.1.5</version>
         </dependency>
-    </dependencies>
+        
+        
+        
+        <!-- TRANSAZIONALITA' ATOMIKOS	<version>3.9.34</version>  
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-jta-atomikos</artifactId>
+			
+		</dependency>-->
+		
+</dependencies>
+
+   
  
     <build>
         <plugins>
