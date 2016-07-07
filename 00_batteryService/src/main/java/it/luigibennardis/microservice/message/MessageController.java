@@ -21,7 +21,7 @@ public class MessageController {
 	public String writeMessage(CreditCardInfo ccInfo){
 		 				
 		source.output().send(MessageBuilder.withPayload(ccInfo).build());
-				
+		 
 		return "ok";			
 	}
 		

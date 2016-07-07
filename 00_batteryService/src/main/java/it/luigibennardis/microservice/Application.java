@@ -13,13 +13,17 @@ import javax.persistence.Table;
 import javax.sql.DataSource;
 
 
+
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
  
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceBuilder;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
  
+import org.springframework.boot.context.properties.ConfigurationProperties;
 //import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.context.annotation.Bean;
  
@@ -35,7 +39,14 @@ public class Application {
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
     }
-     
+    
+    /*
+    @Bean
+    @ConfigurationProperties(prefix = "spring.datasource")
+    public DataSource dataSource() {
+        return DataSourceBuilder.create().build();
+    }
+    */
      
     @Bean
     @Profile("cloudfoundry")
@@ -52,6 +63,8 @@ public class Application {
     }
     
   //MANDA A CONSOLE UNA VERIFICA DELL'AMBIENTE 
+     
+    /*
     @Bean
     CommandLineRunner verifyEnv(
             DataSourceProperties dataSourceProps,
@@ -59,7 +72,12 @@ public class Application {
     	{
         	return args -> System.out.println("\n\n JDBC URL=" + jdbcUrl + ".\n\n the DS URL=" + dataSourceProps.getUrl() + ".\n\n");
     	}
+    */	 
 }
+
+
+
+
 
 @RepositoryRestResource(collectionResourceRel = "batterie", path = "batterie")
 interface IBatterie extends PagingAndSortingRepository<Batterie, String> {
