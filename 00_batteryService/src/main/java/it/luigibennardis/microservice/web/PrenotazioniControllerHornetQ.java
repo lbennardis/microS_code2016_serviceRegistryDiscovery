@@ -8,6 +8,7 @@ import it.luigibennardis.microservice.message.MessageController;
 import it.luigibennardis.microservice.repositories.PrenotazioniRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jms.core.JmsTemplate;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,18 +16,24 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @Transactional
-@RequestMapping(value = "/prenotazioniWriteMessage")
-public class PrenotazioniControllerKafka {
+@RequestMapping(value = "/prenotazioniWriteMessageHQ")
+public class PrenotazioniControllerHornetQ {
 	@Autowired
 	private final PrenotazioniRepository prenotazioniRepository;
 	
-	@Autowired
-	private  MessageController callKafka ;
-		
+	//@Autowired
+	//private  MessageController callKafka ;
+	
+	
+	private final JmsTemplate jmsTemplate;
+    
+	
     @Autowired
-    PrenotazioniControllerKafka(PrenotazioniRepository prenotazioniRepository) {
+    PrenotazioniControllerHornetQ(PrenotazioniRepository prenotazioniRepository,JmsTemplate jmsTemplate) {
         this.prenotazioniRepository = prenotazioniRepository;
+        this.jmsTemplate = jmsTemplate;
     }
+    
     
     
 	@RequestMapping(value = "/aggiungi/{stazione}/{batteria}/{citta}/{latitudine}/{longitudine}")
@@ -38,9 +45,11 @@ public class PrenotazioniControllerKafka {
 		
 		prenotazioniRepository.saveAndFlush(prenotaBatteria);
 		
-		String ret = callKafka.writeMessage(new CreditCardInfo(prenotaBatteria.getId(), "1234 5678 3456 7878"));
-		
-		System.out.println("KAFKA MESSAGE : >" + ret);
+		String ret = "o";
+				
+		//System.out.println("KAFKA MESSAGE : >" + ret);
+		//new CreditCardInfo(prenotaBatteria.getId(), "1234 5678 3456 7878")
+		this.jmsTemplate.convertAndSend("accounts", "messaggio" );
 		
 		System.out.println(prenotaBatteria.getId());
 		
