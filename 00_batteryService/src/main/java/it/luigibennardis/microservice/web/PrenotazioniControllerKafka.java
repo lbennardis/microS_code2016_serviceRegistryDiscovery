@@ -38,7 +38,7 @@ public class PrenotazioniControllerKafka {
 		
 		prenotazioniRepository.saveAndFlush(prenotaBatteria);
 		
-		String ret = callKafka.writeMessage(new CreditCardInfo(prenotaBatteria.getId(), "1234 5678 3456 7878"));
+		String ret = "";//callKafka.writeMessage(new CreditCardInfo(prenotaBatteria.getId(), "1234 5678 3456 7878"));
 		
 		System.out.println("KAFKA MESSAGE : >" + ret);
 		

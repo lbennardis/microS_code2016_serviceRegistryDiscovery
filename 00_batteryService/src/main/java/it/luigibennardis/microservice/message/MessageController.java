@@ -8,9 +8,10 @@ import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.stereotype.Component;
 
 @Component
-@EnableBinding(Source.class)
+//@EnableBinding(Source.class)
 public class MessageController {
 	
+	/*
 	@Autowired
 	private Source source;
 	
@@ -24,6 +25,6 @@ public class MessageController {
 		 
 		return "ok";			
 	}
-		
+	*/	
 	
 }
