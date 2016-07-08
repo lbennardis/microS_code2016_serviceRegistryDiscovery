@@ -62,6 +62,17 @@ public class Application {
         }
     }
     
+    /*
+    @Bean
+    @Profile("localh2")
+    CommandLineRunner commandLineRunner(DatabaseInitializer databaseInitializer) {
+        return args -> {
+            // Initialize the database for end to end integration testing
+            databaseInitializer.populate();
+        };
+    }
+    */
+    
   //MANDA A CONSOLE UNA VERIFICA DELL'AMBIENTE 
      
     /*
