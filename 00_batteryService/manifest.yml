@@ -6,14 +6,14 @@ applications:
     buildpack: java_buildpack
     host: 00-batteryService
     domain: cfapps.io
-    path: target/00-batteryService.jar
+    path: target/00-batteryService-1.0.0.BUILD-SNAPSHOT.jar
     services:
      - mySqlBackingServices
     datasource:
     jpa:
     hibernate.ddl-auto: none
-    show_sql: false 
-  env:
+    show_sql: false
+env:
     SPRING_PROFILES_ACTIVE: cloudfoundry
     DEBUG: "true"
     debug: "true"
