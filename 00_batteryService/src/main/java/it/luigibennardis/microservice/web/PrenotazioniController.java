@@ -1,7 +1,7 @@
 package it.luigibennardis.microservice.web;
 
 import it.luigibennardis.microservice.domain.Prenotazioni;
-import it.luigibennardis.microservice.repositories.PrenotazioniRepository;
+import it.luigibennardis.microservice.repositories.IBookRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,10 +12,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(value = "/prenotazioni")
 public class PrenotazioniController {
 	@Autowired
-	private final PrenotazioniRepository prenotazioniRepository;
+	private final IBookRepository prenotazioniRepository;
 
     @Autowired
-    PrenotazioniController(PrenotazioniRepository prenotazioniRepository) {
+    PrenotazioniController(IBookRepository prenotazioniRepository) {
         this.prenotazioniRepository = prenotazioniRepository;
     }
         

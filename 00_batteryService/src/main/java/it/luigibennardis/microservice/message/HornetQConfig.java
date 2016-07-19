@@ -13,6 +13,25 @@ import org.springframework.jms.connection.CachingConnectionFactory;
 @EnableJms
 @Configuration
 public class HornetQConfig {
+	/*
+	 * #HORNETQ SERVER
+spring.hornetq.mode=native
+spring.hornetq.host=10.17.188.191
+spring.hornetq.port=9876
+spring.hornetq.embedded.enabled=false
+#org.hornetq.jms.server.config.JMSQueueConfiguration=provaCodaMessaggi
+#9876 5445
+#spring.hornetq.mode=native
+#spring.hornetq.host=localhost
+#spring.hornetq.port=9876
+#spring.hornetq.embedded.enabled=false
+
+
+
+# application properties
+jms.queueName=queue1
+jms.selector=CLIENT_ID=1
+sleepTime=0
 
     @Bean
     public CachingConnectionFactory connectionFactory() {
@@ -42,5 +61,5 @@ public class HornetQConfig {
                         "org.hornetq.core.remoting.impl.netty.NettyConnectorFactory", map);
         return configuration;
     }
-
+    */
 }
