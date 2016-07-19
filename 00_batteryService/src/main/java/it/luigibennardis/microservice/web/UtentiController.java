@@ -7,9 +7,9 @@ import it.luigibennardis.microservice.domain.Indirizzi;
 import it.luigibennardis.microservice.domain.Match;
 import it.luigibennardis.microservice.domain.Prenotazioni;
 import it.luigibennardis.microservice.domain.Utenti;
-import it.luigibennardis.microservice.repositories.IndirizziRepository;
+import it.luigibennardis.microservice.repositories.IAddressRepository;
 import it.luigibennardis.microservice.repositories.MatchRepository;
-import it.luigibennardis.microservice.repositories.PrenotazioniRepository;
+import it.luigibennardis.microservice.repositories.IBookRepository;
 import it.luigibennardis.microservice.repositories.ResultRepository;
 import it.luigibennardis.microservice.repositories.StazioniNamedQueryRepository;
 import it.luigibennardis.microservice.repositories.UtentiRepository;
@@ -30,10 +30,10 @@ public class UtentiController {
 
 	
 	private final StazioniNamedQueryRepository stazioniRepository;
-	private final IndirizziRepository indirizziRepository;
+	private final IAddressRepository indirizziRepository;
 	
     @Autowired
-    UtentiController(StazioniNamedQueryRepository stazioniRepository, IndirizziRepository indirizziRepository ) {
+    UtentiController(StazioniNamedQueryRepository stazioniRepository, IAddressRepository indirizziRepository ) {
     	this.stazioniRepository = stazioniRepository;
     	this.indirizziRepository = indirizziRepository;
         

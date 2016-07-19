@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class HqMessage {
 	/* va bene ma deve essere creata lcoda*/
-	
+	/*
 	@JmsListener(destination = "ExpiryQueue")
 	public void onMessage(String content) {
 		System.out.println("----> " + content);
@@ -22,6 +22,6 @@ public class HqMessage {
 	public void send() {
 	    this.jmsTemplate.convertAndSend("ExpiryQueue", "Hello from external app");
 	}
-	
+	*/
 }
 

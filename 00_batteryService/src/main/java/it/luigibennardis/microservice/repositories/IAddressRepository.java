@@ -8,6 +8,6 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface IndirizziRepository extends JpaRepository<Indirizzi,Long> {
+public interface IAddressRepository extends JpaRepository<Indirizzi,Long> {
 	public List<Indirizzi> findAll();
 }

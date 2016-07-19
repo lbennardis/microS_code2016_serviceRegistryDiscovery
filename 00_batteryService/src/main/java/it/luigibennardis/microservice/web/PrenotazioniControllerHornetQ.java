@@ -5,7 +5,7 @@ import javax.transaction.Transactional;
 import it.luigibennardis.microservice.domain.CreditCardInfo;
 import it.luigibennardis.microservice.domain.Prenotazioni;
 import it.luigibennardis.microservice.message.MessageController;
-import it.luigibennardis.microservice.repositories.PrenotazioniRepository;
+import it.luigibennardis.microservice.repositories.IBookRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.core.JmsTemplate;
@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(value = "/prenotazioniWriteMessageHQ")
 public class PrenotazioniControllerHornetQ {
 	@Autowired
-	private final PrenotazioniRepository prenotazioniRepository;
+	private final IBookRepository prenotazioniRepository;
 	
 	//@Autowired
 	//private  MessageController callKafka ;
@@ -29,7 +29,7 @@ public class PrenotazioniControllerHornetQ {
     
 	
     @Autowired
-    PrenotazioniControllerHornetQ(PrenotazioniRepository prenotazioniRepository,JmsTemplate jmsTemplate) {
+    PrenotazioniControllerHornetQ(IBookRepository prenotazioniRepository,JmsTemplate jmsTemplate) {
         this.prenotazioniRepository = prenotazioniRepository;
         this.jmsTemplate = jmsTemplate;
     }
