@@ -42,7 +42,7 @@ public class MicroserviceServerApplication {
 	@Autowired
 	DiscoveryClient client;
 
-	@RequestMapping("/")
+	@RequestMapping("/infoInstance")
 	public String hello() {
 		//CLIENT REFERENCE
 		ServiceInstance localInstance = client.getLocalServiceInstance();

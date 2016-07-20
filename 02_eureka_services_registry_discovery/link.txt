@@ -6,3 +6,7 @@ http://sdpsvrsa094:7111/prenotazioni/aggiungi/STAZ001/BATT001/ROMA/42/16
 http://sdpsvrsa094:7111/prenotazioni/lista
 
 java -jar server/target/feign-eureka-hello-server-0.0.1-SNAPSHOT.jar --server.port=7112
+
+EUREKA SERVER
+java -jar target/eureka-server.jar --server.port=8761
+
