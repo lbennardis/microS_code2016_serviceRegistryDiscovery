@@ -1,7 +1,14 @@
 package it.luigibennardis.microservice.client;
 
+//import it.luigibennardis.eureka.microservice.Anagrafica;
+//import it.luigibennardis.eureka.microservice.AnagraficaRepository;
+
+import java.util.Arrays;
 import java.util.List;
  
+
+
+
 
 
 
@@ -12,7 +19,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
-import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.cloud.netflix.feign.EnableFeignClients;
 import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.context.annotation.Bean;
@@ -24,83 +31,35 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 
+
+
+
+import com.netflix.appinfo.InstanceInfo;
+
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
-/**
- * @author Spencer Gibb
- */
+
 @SpringBootApplication
 @EnableDiscoveryClient
 @RestController
 @EnableFeignClients
-public class HelloClientApplication {
+ 
+public class EurekaClientRibbonApplication {
 	@Autowired
 	HelloClient client;
-	
-	@Autowired
-	DiscoveryClient discoveryClient;
-	
-	@Autowired
-	LoadBalancerClient loadBalancerClient;
-	
-	
+
+	 
 	@RequestMapping("/ciao")
 	public String hello() {
-		return  client.hello() ;
-				        
+		return  client.hello();
 	}
- 
+	
 	
 	 
-	@RequestMapping("/discovery")
-	public String discovery() {
-		List<ServiceInstance> instances = this.discoveryClient.getInstances("microservice-server");
-	    if(instances != null && !instances.isEmpty()) {
-	        ServiceInstance serviceInstance = instances.get(0);
-	        return String.format("http://%s:%d", serviceInstance.getHost(), serviceInstance.getPort());
-	    }
-		return "no instances of microservice-server";
-			        
-	}
-		
-	
-	@RequestMapping("/loadBalancerClient")
-	public String loadBalancerClient() {
-		ServiceInstance serviceInstance = this.loadBalancerClient.choose("microservice-server");
-        if (serviceInstance != null) {
-            return String.format("http://%s:%d", serviceInstance.getHost(), serviceInstance.getPort());
-        } else {
-        	return "no instances of load balancer client microservice-server";
-        }
-		
-			        
-	}
-	
-    /*private final LoadBalancerClient loadBalancerClient;
-
-    @Autowired
-    public RibbonLeaderBoardApi(LoadBalancerClient loadBalancerClient) {
-        this.loadBalancerClient = loadBalancerClient;
-    }
-
-    @Override
-    protected String getLeaderBoardAddress() {
-        ServiceInstance serviceInstance = this.loadBalancerClient.choose("repmax-leaderboard");
-        if (serviceInstance != null) {
-            return String.format("http://%s:%d", serviceInstance.getHost(), serviceInstance.getPort());
-        } else {
-            throw new IllegalStateException("Unable to locate a leaderboard service");
-        }
-    }
-    */
-	
-	
-	
 	@RequestMapping("/")
 	public String getGiocatore() {
 		return client.getGiocatore("LUIGI").toString() + " - " +  client.hello();
 	}
-	
 	
 		
 	//DEVE ESSERE DICHIARATO IL SERVIZIO COME REGISTRATO SU EUREKA
@@ -114,13 +73,18 @@ public class HelloClientApplication {
 	}
 
 	
+	
 	public static void main(String[] args) {
-		SpringApplication.run(HelloClientApplication.class, args);
+		SpringApplication.run(EurekaClientRibbonApplication.class, args);
 	}
 
+	private DiscoveryClient discoveryClient;
 	
-	/*
-	protected String getServiceAddress() {
+	 
+	
+	
+	
+    protected String getServiceAddress() {
         List<ServiceInstance> instances = this.discoveryClient.getInstances("microservice-server");
         if(instances != null && !instances.isEmpty()) {
             ServiceInstance serviceInstance = instances.get(0);
@@ -128,8 +92,19 @@ public class HelloClientApplication {
         }
         throw new IllegalStateException("Unable to locate a microservice-server service");
     }
-	*/
-   
+	
+    
+    
+    
+    @Bean
+    CommandLineRunner init() {
+    			System.out.println(" ");
+           		System.out.println(this.getServiceAddress());
+              	System.out.println(" ");
+				return null;
+              	}
+    
+    
 }
 
 
