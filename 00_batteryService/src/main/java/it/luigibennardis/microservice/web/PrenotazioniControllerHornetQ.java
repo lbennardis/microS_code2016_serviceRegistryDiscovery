@@ -2,10 +2,10 @@ package it.luigibennardis.microservice.web;
 
 import javax.transaction.Transactional;
 
-import it.luigibennardis.microservice.domain.CreditCardInfo;
-import it.luigibennardis.microservice.domain.Prenotazioni;
+//import it.luigibennardis.microservice.domain.CreditCardInfo;
+import it.luigibennardis.microservice.domain.Booking;
 import it.luigibennardis.microservice.message.MessageController;
-import it.luigibennardis.microservice.repositories.IBookRepository;
+import it.luigibennardis.microservice.repositories.IBookingInfoRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.core.JmsTemplate;
@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(value = "/prenotazioniWriteMessageHQ")
 public class PrenotazioniControllerHornetQ {
 	@Autowired
-	private final IBookRepository prenotazioniRepository;
+	private final IBookingInfoRepository prenotazioniRepository;
 	
 	//@Autowired
 	//private  MessageController callKafka ;
@@ -29,7 +29,7 @@ public class PrenotazioniControllerHornetQ {
     
 	
     @Autowired
-    PrenotazioniControllerHornetQ(IBookRepository prenotazioniRepository,JmsTemplate jmsTemplate) {
+    PrenotazioniControllerHornetQ(IBookingInfoRepository prenotazioniRepository,JmsTemplate jmsTemplate) {
         this.prenotazioniRepository = prenotazioniRepository;
         this.jmsTemplate = jmsTemplate;
     }
@@ -37,11 +37,11 @@ public class PrenotazioniControllerHornetQ {
     
     
 	@RequestMapping(value = "/aggiungi/{stazione}/{batteria}/{citta}/{latitudine}/{longitudine}")
-	public Prenotazioni addBook(@PathVariable String stazione, @PathVariable String batteria,
+	public Booking addBook(@PathVariable String stazione, @PathVariable String batteria,
 			 @PathVariable String citta , @PathVariable long latitudine, @PathVariable long longitudine) {
 		
 		
-		Prenotazioni prenotaBatteria = new Prenotazioni(stazione + batteria,stazione,citta,latitudine,longitudine);
+		Booking prenotaBatteria = new Booking(stazione + batteria,stazione,citta,latitudine,longitudine);
 		
 		prenotazioniRepository.saveAndFlush(prenotaBatteria);
 		

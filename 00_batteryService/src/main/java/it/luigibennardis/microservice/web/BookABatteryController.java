@@ -1,7 +1,7 @@
 package it.luigibennardis.microservice.web;
 
-import it.luigibennardis.microservice.domain.Prenotazioni;
-import it.luigibennardis.microservice.repositories.IBookRepository;
+import it.luigibennardis.microservice.domain.Booking;
+import it.luigibennardis.microservice.repositories.IBookingInfoRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -10,20 +10,20 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping(value = "/prenotazioni")
-public class PrenotazioniController {
+public class BookABatteryController {
 	@Autowired
-	private final IBookRepository prenotazioniRepository;
+	private final IBookingInfoRepository prenotazioniRepository;
 
     @Autowired
-    PrenotazioniController(IBookRepository prenotazioniRepository) {
+    BookABatteryController(IBookingInfoRepository prenotazioniRepository) {
         this.prenotazioniRepository = prenotazioniRepository;
     }
         
 	@RequestMapping(value = "/aggiungi/{stazione}/{batteria}/{citta}/{latitudine}/{longitudine}")
-	public Prenotazioni addBook(@PathVariable String stazione, @PathVariable String batteria,
+	public Booking addBook(@PathVariable String stazione, @PathVariable String batteria,
 			 @PathVariable String citta , @PathVariable long latitudine, @PathVariable long longitudine) {
 		
-		Prenotazioni prenotaBatteria = new Prenotazioni(stazione + batteria,stazione,citta,latitudine,longitudine);
+		Booking prenotaBatteria = new Booking(stazione + batteria,stazione,citta,latitudine,longitudine);
 		
 		prenotazioniRepository.saveAndFlush(prenotaBatteria);
 			
@@ -32,7 +32,7 @@ public class PrenotazioniController {
 	}
 			
 	@RequestMapping(value = "/lista")
-	public List<Prenotazioni> listaPrenotazioni() {
+	public List<Booking> listaPrenotazioni() {
 				
 		return prenotazioniRepository.findAll();
 	}

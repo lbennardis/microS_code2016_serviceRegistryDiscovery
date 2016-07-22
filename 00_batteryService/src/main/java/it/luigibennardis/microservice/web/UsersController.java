@@ -3,16 +3,13 @@ package it.luigibennardis.microservice.web;
 
 
  
-import it.luigibennardis.microservice.domain.Indirizzi;
-import it.luigibennardis.microservice.domain.Match;
-import it.luigibennardis.microservice.domain.Prenotazioni;
-import it.luigibennardis.microservice.domain.Utenti;
-import it.luigibennardis.microservice.repositories.IAddressRepository;
-import it.luigibennardis.microservice.repositories.MatchRepository;
-import it.luigibennardis.microservice.repositories.IBookRepository;
-import it.luigibennardis.microservice.repositories.ResultRepository;
+import it.luigibennardis.microservice.domain.StationAddress;
+ 
+import it.luigibennardis.microservice.domain.Booking;
+import it.luigibennardis.microservice.domain.Users;
+import it.luigibennardis.microservice.repositories.IStationAddressRepository;
+import it.luigibennardis.microservice.repositories.IBookingInfoRepository;
 import it.luigibennardis.microservice.repositories.StazioniNamedQueryRepository;
-import it.luigibennardis.microservice.repositories.UtentiRepository;
 
 import java.util.Iterator;
 import java.util.List;
@@ -26,14 +23,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class UtentiController {
+public class UsersController {
 
 	
 	private final StazioniNamedQueryRepository stazioniRepository;
-	private final IAddressRepository indirizziRepository;
+	private final IStationAddressRepository indirizziRepository;
 	
     @Autowired
-    UtentiController(StazioniNamedQueryRepository stazioniRepository, IAddressRepository indirizziRepository ) {
+    UsersController(StazioniNamedQueryRepository stazioniRepository, IStationAddressRepository indirizziRepository ) {
     	this.stazioniRepository = stazioniRepository;
     	this.indirizziRepository = indirizziRepository;
         
@@ -41,9 +38,9 @@ public class UtentiController {
     
     
     @RequestMapping(method = RequestMethod.GET, value = "/indirizzi")
-    ResponseEntity<List<Indirizzi>> listaIndirizzi() {
+    ResponseEntity<List<StationAddress>> listaIndirizzi() {
         
-    	List<Indirizzi> indirizzi = indirizziRepository.findAll();
+    	List<StationAddress> indirizzi = indirizziRepository.findAll();
     	
     	
     	
@@ -54,10 +51,10 @@ public class UtentiController {
     
     
     @RequestMapping(method = RequestMethod.GET, value = "/trovaStazionePiuVicina/{latitudine}/{longitudine}/{distanza}")
-    ResponseEntity<List<Indirizzi>> trovaStazionepiuVicina(@PathVariable long latitudine,
+    ResponseEntity<List<StationAddress>> trovaStazionepiuVicina(@PathVariable long latitudine,
     		@PathVariable long longitudine, long distanza) {
         
-    	List<Indirizzi> indirizzi = stazioniRepository.findNearest(latitudine,longitudine,Double.valueOf(distanza));
+    	List<StationAddress> indirizzi = stazioniRepository.findNearest(latitudine,longitudine,Double.valueOf(distanza));
     	
     	//return new ResponseEntity<>(result, HttpStatus.CREATED);
         
