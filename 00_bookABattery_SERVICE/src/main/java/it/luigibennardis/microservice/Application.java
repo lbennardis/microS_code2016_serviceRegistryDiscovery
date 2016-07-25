@@ -22,6 +22,18 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.jdbc.datasource.SimpleDriverDataSource;
 
 
+
+import org.springframework.cloud.stream.annotation.EnableBinding;
+import org.springframework.cloud.stream.messaging.Source;
+
+import org.springframework.integration.annotation.InboundChannelAdapter;
+import org.springframework.integration.annotation.Poller;
+import org.springframework.integration.core.MessageSource;
+import org.springframework.integration.support.MessageBuilder;
+
+
+
+
 //@EnableDiscoveryClient //***AGGIUNTO PER EUREKA
 @SpringBootApplication
 public class Application {
@@ -29,6 +41,8 @@ public class Application {
         SpringApplication.run(Application.class, args);
     }
     
+
+
     /*
     @Bean
     @ConfigurationProperties(prefix = "spring.datasource")
