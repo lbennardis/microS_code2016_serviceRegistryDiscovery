@@ -1,6 +1,10 @@
 package it.luigibennardis.microservice.message.broker;
 
+import it.luigibennardis.microservice.domain.Booking;
+import it.luigibennardis.microservice.repositories.IBookingInfoRepository;
+
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.stream.annotation.EnableBinding;
@@ -14,12 +18,26 @@ import org.springframework.integration.support.MessageBuilder;
 @EnableBinding(Source.class)
 public class PublishToKafka {
 	
+	@Autowired
+	private final IBookingInfoRepository prenotazioniRepository;
+
+    @Autowired
+    PublishToKafka(IBookingInfoRepository prenotazioniRepository) {
+        this.prenotazioniRepository = prenotazioniRepository;
+    }
+	
+    
+	
+	
 	@Bean
 	@InboundChannelAdapter(value = Source.OUTPUT, poller = @Poller(fixedDelay = "10000", maxMessagesPerPoll = "1"))
 	public MessageSource<TimeInfo> timerMessageSource() {
 		
     	// CALL SERVICE THAT RETURNS A LIST OF BOOKING RECORD IN PENDING STATE 
-    	
+		//Booking prenotaBatteria = null;
+	    
+	    //List <Booking> listItems;
+	    //listItems = prenotazioniRepository.findAll();
     	
     	
         
