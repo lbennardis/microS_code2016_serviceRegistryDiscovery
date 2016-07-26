@@ -1,17 +1,22 @@
 package it.luigibennardis.microservice.domain;
 
+import java.util.Date;
 import java.util.UUID;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+
 import java.text.DecimalFormat;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
 @Table(name = "booking")
+@NamedQuery(name="Booking.findPending",query="SELECT id,batterycode,stationid,city,latitude,longitude, bookingstate,tscreation, tsupdate FROM  Booking  WHERE bookingstate = 'PENDING'")
+
 public class Booking {
 
 	//@GeneratedValue
@@ -38,16 +43,33 @@ public class Booking {
     @JsonProperty("longitude")
     private long longitude;
 
+    @JsonProperty("bookingstate")
+    private volatile String bookingstate;
+   
+    @JsonProperty("tscreation")
+    private volatile Date tscreation;
+    
+    @JsonProperty("tsupdate")
+    private volatile Date tsupdate; 
+
+   
+    
     Booking() {
     }
 
-    public Booking(String batteryCode, String stationId, String city, long latitude, long longitude) {
+    public Booking(String batteryCode, String stationId, String city, long latitude, long longitude, String bookingstate) {
         this.id = UUID.randomUUID().toString();
     	this.batterycode = batteryCode;
         this.stationid = stationId;
         this.city = city;
         this.latitude = latitude;
         this.longitude = longitude;
+        this.bookingstate = bookingstate;
+        java.util.Date date = new java.util.Date();
+        java.sql.Timestamp timestamp = new java.sql.Timestamp(date.getTime());
+        this.tscreation = timestamp;
+        this.tsupdate = timestamp;
+        
                 }
     
     
@@ -103,6 +125,31 @@ public class Booking {
 	public void setLongitude(long longitude) {
 		this.longitude = longitude;
 	}
+		
+	public String getBookingState() {
+		return bookingstate;
+	}
+
+	public void setBookingState(String bookingstate) {
+		this.bookingstate = bookingstate;
+	}
+	
+	public Date getTscreation() {
+		return tscreation;
+	}
+	
+	public void SetTscreation(Date  tscreation) {
+		this.tscreation = tscreation;
+	}
+	
+	public Date getTsupdate() {
+		return tsupdate;
+	}
+	
+	public void SetTsupdate(Date  tsupdate) {
+		this.tsupdate = tsupdate;
+	}
+		
 }
 
  

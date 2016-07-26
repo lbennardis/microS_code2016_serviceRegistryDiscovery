@@ -1,6 +1,7 @@
 package it.luigibennardis.microservice.message.broker;
 
 import it.luigibennardis.microservice.domain.Booking;
+
 import it.luigibennardis.microservice.repositories.IBookingInfoRepository;
 import it.luigibennardis.microservice.service.GetPendingBookingInfo;
 
@@ -26,39 +27,17 @@ public class PublishToKafka {
 	@Autowired
 	private ApplicationContext context;
 	
-	/*
-	@Autowired
-	private final IBookingInfoRepository prenotazioniRepository;
-
-    @Autowired
-    PublishToKafka(IBookingInfoRepository prenotazioniRepository) {
-        this.prenotazioniRepository = prenotazioniRepository;
-    }
-	*/
-    
-	
-	
+		
 	@Bean
 	@InboundChannelAdapter(value = Source.OUTPUT, poller = @Poller(fixedDelay = "10000", maxMessagesPerPoll = "1"))
-	//public MessageSource<TimeInfo> timerMessageSource() {
-		public MessageSource<Booking> timerMessageSource() {
+	public MessageSource <List <Booking>> timerMessageSource() {
 				
-    	// CALL SERVICE THAT RETURNS A LIST OF BOOKING RECORD IN PENDING STATE 
-		//Booking prenotaBatteria = null;
-	    
-	    //List <Booking> listItems;
-	    //listItems = prenotazioniRepository.findAll();
     	  	
 		GetPendingBookingInfo  service = context.getBean(GetPendingBookingInfo.class);
 		
 		List <Booking> listaItem = service.getPendingBooking();
 		
-		
-    	TimeInfo timeInfo = new TimeInfo(new Date().getTime()+"","Label");
-    	    	
-    	
-    	//return () -> MessageBuilder.withPayload(timeInfo).build();
-    	return () -> MessageBuilder.withPayload(listaItem.get(0)).build();
+		return () -> MessageBuilder.withPayload(listaItem).build();
     	}
 	
 	public static class TimeInfo{

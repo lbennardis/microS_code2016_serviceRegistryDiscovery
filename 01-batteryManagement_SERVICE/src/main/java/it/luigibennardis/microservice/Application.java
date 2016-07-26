@@ -1,5 +1,7 @@
 package it.luigibennardis.microservice;
 
+import java.util.List;
+
 import it.luigibennardis.microservice.model.Booking;
 
 import org.springframework.boot.SpringApplication;
@@ -18,10 +20,18 @@ public class Application {
 	}
 
 	@StreamListener(Sink.INPUT)
-	public void loggerSink(Booking bookInfo) {
+	public void loggerSink(List <Booking> bookInfo) {
 		
-		System.out.println ("Received: " + bookInfo.toString());
-		//System.out.println ("Received meggage from timerTopic " );
+		
+		 
+		for (int i = 0; i < bookInfo.size(); i++) {
+			Booking appo = bookInfo.get(i);
+			
+			System.out.println ("Received: " + appo.toString());
+		}
+		
+		 
+		
 		
 	}
 		

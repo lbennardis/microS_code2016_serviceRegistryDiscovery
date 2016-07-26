@@ -4,5 +4,8 @@ CREATE TABLE `booking` (
   `stationid` VARCHAR(255) NULL,
   `city` VARCHAR(45) NULL,
   `latitude` DECIMAL(10,8) NOT NULL,
-  `longitude` DECIMAL(10,8) NOT NULL
+  `longitude` DECIMAL(10,8) NOT NULL,
+  `bookingstate` VARCHAR(45) NULL,
+  `tscreation` TIMESTAMP NOT NULL ,
+  `tsupdate` TIMESTAMP NOT NULL 
   );

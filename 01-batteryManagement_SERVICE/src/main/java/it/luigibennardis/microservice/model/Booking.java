@@ -1,5 +1,6 @@
 package it.luigibennardis.microservice.model;
 
+import java.util.Date;
 import java.util.UUID;
 
 import javax.persistence.Entity;
@@ -12,16 +13,18 @@ import java.text.DecimalFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
-@Table(name = "booking")
 public class Booking {
 
-	//@GeneratedValue
 	@Id
-    @JsonProperty("id")
-	private String id ; //= UUID.randomUUID().toString();
+	@JsonProperty("id")
+	private String id ;  
 
     public String getId() {
         return id;
+    }
+    
+    public void setId(String id) {
+        this.id =id;
     }
     
     @JsonProperty("batterycode")
@@ -39,24 +42,36 @@ public class Booking {
     @JsonProperty("longitude")
     private long longitude;
 
+    @JsonProperty("bookingstate")
+    private volatile String bookingstate;
+   
+    @JsonProperty("tscreation")
+    private volatile Date tscreation;
+    
+    @JsonProperty("tsupdate")
+    private volatile Date tsupdate; 
+    
     Booking() {
     }
 
-    public Booking(String batteryCode, String stationId, String city, long latitude, long longitude) {
-        this.id = UUID.randomUUID().toString();
+     
+        
+    public Booking(String id, String batteryCode, String stationId, String city, long latitude, long longitude, String bookingstate, Date tscreation, Date tsupdate) {
+        this.id = id ; //UUID.randomUUID().toString();
     	this.batterycode = batteryCode;
         this.stationid = stationId;
         this.city = city;
         this.latitude = latitude;
         this.longitude = longitude;
-                }
+        this.tscreation = tscreation;
+        this.tsupdate = tsupdate;
+        }
     
     
 	public String getBatteryCode() {
 		return batterycode;
 	}
-	
-    
+	    
 	
 	public void setBatteryCode(String batteryCode) {
 		this.batterycode = batteryCode;
@@ -105,7 +120,29 @@ public class Booking {
 		this.longitude = longitude;
 	}
 	
+	public String getBookingState() {
+		return bookingstate;
+	}
+
+	public void setBookingState(String bookingstate) {
+		this.bookingstate = bookingstate;
+	}
 	
+	public Date getTscreation() {
+		return tscreation;
+	}
+	
+	public void SetTscreation(Date  tscreation) {
+		this.tscreation = tscreation;
+	}
+	
+	public Date getTsupdate() {
+		return tsupdate;
+	}
+	
+	public void SetTsupdate(Date  tsupdate) {
+		this.tsupdate = tsupdate;
+	}	
 	
 	@Override
 	public String toString() {

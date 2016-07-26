@@ -23,7 +23,7 @@ public class BookABatteryController {
 	public Booking addBook(@PathVariable String stazione, @PathVariable String batteria,
 			 @PathVariable String citta , @PathVariable long latitudine, @PathVariable long longitudine) {
 		
-		Booking prenotaBatteria = new Booking(stazione + batteria,stazione,citta,latitudine,longitudine);
+		Booking prenotaBatteria = new Booking(stazione + batteria,stazione,citta,latitudine,longitudine,"PENDING");
 		
 		
 		prenotazioniRepository.saveAndFlush(prenotaBatteria);
