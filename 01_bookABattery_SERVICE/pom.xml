@@ -29,7 +29,7 @@
     
     
     <groupId>it.luigibennardis</groupId>
-    <artifactId>00-batteryService</artifactId>
+    <artifactId>01-bookABattery_SERVICE</artifactId>
     <version>1.0.0.BUILD-SNAPSHOT</version>
     <packaging>jar</packaging>
 
@@ -171,12 +171,12 @@
         
         
         
-        
+        <!--
         <dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-jms</artifactId>
 		</dependency>
-		
+		-->
 	<!--	 
 <dependency>
     <groupId>org.springframework.boot</groupId>
@@ -184,12 +184,12 @@
      
 </dependency>
 -->
-		
+		<!--
 		<dependency>
 			<groupId>org.hornetq</groupId>
 			<artifactId>hornetq-jms-server</artifactId>
 		</dependency>
-        
+        -->
         
         <!-- TRANSAZIONALITA' ATOMIKOS	<version>3.9.34</version>  non funziona con flyway -->
 		<dependency>
