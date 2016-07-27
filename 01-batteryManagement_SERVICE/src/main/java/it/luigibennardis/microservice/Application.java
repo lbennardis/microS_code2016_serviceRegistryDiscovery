@@ -1,10 +1,18 @@
 package it.luigibennardis.microservice;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import it.luigibennardis.microservice.message.WriteReturnTopic;
 import it.luigibennardis.microservice.model.Booking;
  
+
+
+
+
+
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
@@ -46,22 +54,27 @@ public class Application {
 				
 		WriteReturnTopic  service = context.getBean(WriteReturnTopic.class);
 		
-		 
-		for (int i = 0; i < bookInfo.size(); i++) {
+		Iterator<Booking> iterator = bookInfo.iterator();
+						
+		int i = 0;
+		while(iterator.hasNext()){
+			Object obj = iterator.next();
+					
+			@SuppressWarnings("unchecked")
+			ArrayList<String> appo = 	(ArrayList<String>) obj;
 			
-			//Booking appo = ((Booking)bookInfo.get(i));
+			//***CHECK AVAILABLE FUNDS 
 			
-			//System.out.println ("Received: " + appo.toXML());
-			//System.out.println ("Received: " + i);
 			
-			//check balance
-			// write to another response Topic
+			//service.writeOnReturnTopic(obj.toString());
+			service.writeOnReturnTopic(appo.get(0));
 			
-			service.sayHello("");
+			 
+	           
 		}
 		
 		
-		
+			
 	}
 		
 	
