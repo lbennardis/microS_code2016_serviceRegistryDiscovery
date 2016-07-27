@@ -6,11 +6,12 @@ import org.springframework.cloud.stream.annotation.Output;
 import org.springframework.messaging.MessageChannel;
 import org.springframework.messaging.SubscribableChannel;
 
-public interface IKafkaChannels {
+public interface Sink {
 	
-		@Input("confirmBookingTopic")
-	    SubscribableChannel readTopic();
+		String INPUT = "confirmBookingTopic";
 
-	    //@Output("confirmBookingTopic")
-	    //MessageChannel writeTopic();
-}
+		@Input(Sink.INPUT)
+		SubscribableChannel confirmBookingTopic();
+
+	
+	}
