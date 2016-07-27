@@ -15,7 +15,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
 @Table(name = "booking")
-@NamedQuery(name="Booking.findPending",query="SELECT id,batterycode,stationid,city,latitude,longitude, bookingstate,tscreation, tsupdate FROM  Booking  WHERE bookingstate = 'PENDING'")
+@NamedQuery(name="Booking.findPending",query="SELECT id,batterycode,stationid,city,latitude,longitude, bookingstate,tscreation, tsupdate FROM  Booking  WHERE bookingstate = 'PENDING' ")
 
 public class Booking {
 

@@ -2,13 +2,22 @@ package it.luigibennardis.microservice;
 
 import java.util.List;
 
+import it.luigibennardis.microservice.message.WriteReturnTopic;
 import it.luigibennardis.microservice.model.Booking;
+ 
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.stream.annotation.EnableBinding;
 import org.springframework.cloud.stream.annotation.StreamListener;
 import org.springframework.cloud.stream.messaging.Sink;
+import org.springframework.cloud.stream.messaging.Source;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.Bean;
+import org.springframework.integration.annotation.InboundChannelAdapter;
+import org.springframework.integration.annotation.Poller;
+import org.springframework.integration.core.MessageSource;
 
 @SpringBootApplication
 @EnableBinding(Sink.class)
@@ -19,22 +28,50 @@ public class Application {
 		SpringApplication.run(Application.class, args);
 	}
 
+	
+	
+	
+	
+	@Autowired
+	private ApplicationContext context;
+	
+		
+				
+    	  	
+		
+		
+	
 	@StreamListener(Sink.INPUT)
 	public void loggerSink(List <Booking> bookInfo) {
-		
+				
+		WriteReturnTopic  service = context.getBean(WriteReturnTopic.class);
 		
 		 
 		for (int i = 0; i < bookInfo.size(); i++) {
-			Booking appo = bookInfo.get(i);
 			
-			System.out.println ("Received: " + appo.toString());
+			//Booking appo = ((Booking)bookInfo.get(i));
+			
+			//System.out.println ("Received: " + appo.toXML());
+			//System.out.println ("Received: " + i);
+			
+			//check balance
+			// write to another response Topic
+			
+			service.sayHello("");
 		}
 		
-		 
 		
 		
 	}
 		
-
+	
+	
+		
+		 
+		
+		
 }
+	
+
+
 

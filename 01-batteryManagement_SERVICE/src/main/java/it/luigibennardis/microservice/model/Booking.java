@@ -148,6 +148,10 @@ public class Booking {
 	public String toString() {
 		return "booking INFO  [trabsaction id=" + this.getId() + ", batterycode=" + this.getBatteryCode() + "]";
 	}
+	public String toXML() {
+		return "<trabsaction id=" + this.getId() + "><batterycode=" + this.getBatteryCode() + ">";
+	}
+	
 }
 
  
