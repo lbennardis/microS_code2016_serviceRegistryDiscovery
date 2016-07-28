@@ -38,4 +38,10 @@ public class BookingService {
 	    prenotazioniNamedQueryRepository.updateBooking(idToUpdate);
 		
 	}
+    
+    public void  updateExpiredPendingBooking() {
+		
+	    prenotazioniNamedQueryRepository.deleteExpiredBooking();;
+		
+	}
 }
