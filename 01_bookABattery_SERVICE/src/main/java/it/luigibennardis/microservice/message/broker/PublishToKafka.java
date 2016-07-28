@@ -3,7 +3,7 @@ package it.luigibennardis.microservice.message.broker;
 import it.luigibennardis.microservice.domain.Booking;
 
 import it.luigibennardis.microservice.repositories.IBookingInfoRepository;
-import it.luigibennardis.microservice.service.GetPendingBookingInfo;
+import it.luigibennardis.microservice.service.BookingService;
 
 import java.util.Date;
 import java.util.List;
@@ -33,7 +33,7 @@ public class PublishToKafka {
 	public MessageSource <List <Booking>> timerMessageSource() {
 				
     	  	
-		GetPendingBookingInfo  service = context.getBean(GetPendingBookingInfo.class);
+		BookingService  service = context.getBean(BookingService.class);
 		
 		//List<Booking> listaItem = service.getPendingBooking();
 		

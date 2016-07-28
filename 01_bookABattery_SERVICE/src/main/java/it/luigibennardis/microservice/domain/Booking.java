@@ -9,13 +9,24 @@ import javax.persistence.Id;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import org.springframework.data.jpa.repository.Query;
+
 import java.text.DecimalFormat;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
 @Table(name = "booking")
-@NamedQuery(name="Booking.findPending",query="SELECT id,batterycode,stationid,city,latitude,longitude, bookingstate,tscreation, tsupdate FROM  Booking  WHERE bookingstate = 'PENDING' ")
+//ONLY ONE QUERY @NamedQuery(name="Booking.findPending",query="SELECT id,batterycode,stationid,city,latitude,longitude, bookingstate,tscreation, tsupdate FROM  Booking  WHERE bookingstate = 'PENDING' ")
+
+@NamedQueries({
+	@NamedQuery(name="Booking.findPending",
+			query="SELECT id,batterycode,stationid,city,latitude,longitude, bookingstate,tscreation, tsupdate FROM  Booking  WHERE bookingstate = 'PENDING' "),
+	@NamedQuery(name="Booking.updateBooking",
+			query="UPDATE Booking  set bookingstate = 'CONFIRMED' WHERE id = ?1")
+	})
 
 public class Booking {
 

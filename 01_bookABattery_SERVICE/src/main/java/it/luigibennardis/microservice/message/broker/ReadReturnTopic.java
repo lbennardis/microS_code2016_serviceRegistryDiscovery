@@ -7,6 +7,8 @@ import it.luigibennardis.microservice.message.Sink;
 
 
 
+import it.luigibennardis.microservice.service.BookingService;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,14 +31,22 @@ import org.springframework.stereotype.Component;
 @Component
 @EnableBinding(Sink.class)
 public class ReadReturnTopic {
-		
 	
-	//private static final Logger log = LoggerFactory.getLogger(ReadReturnTopic.class);
-
+	@Autowired
+	private ApplicationContext context;
+	
+	
     @ServiceActivator(inputChannel = Sink.INPUT)
-    public void helloHole(GenericMessage message) {
-        //log.debug("Message: {}", message);
-    	System.out.println("GenericMessage"  + message);
+    public void helloHole(GenericMessage<String> message) {
+        
+    	String idToUpdate = message.getPayload().toString();
+    			
+    	System.out.println("GenericMessage "  + idToUpdate);
+    	
+    	BookingService  service = context.getBean(BookingService.class);
+		
+    	service.updatePendingBooking(idToUpdate);
+    	
     }
         
 }

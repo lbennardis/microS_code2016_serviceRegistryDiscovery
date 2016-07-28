@@ -2,7 +2,10 @@ package it.luigibennardis.microservice.web;
 
 import it.luigibennardis.microservice.domain.Booking;
 import it.luigibennardis.microservice.repositories.IBookingInfoRepository;
+import it.luigibennardis.microservice.repositories.IBookingNamedQueryRepository;
+
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,9 +17,14 @@ public class BookABatteryController {
 	@Autowired
 	private final IBookingInfoRepository prenotazioniRepository;
 
+	@Autowired
+	private final IBookingNamedQueryRepository prenotazioniNamedQueryRepository;
+
     @Autowired
-    BookABatteryController(IBookingInfoRepository prenotazioniRepository) {
+    BookABatteryController(IBookingInfoRepository prenotazioniRepository,
+    		IBookingNamedQueryRepository prenotazioniNamedQueryRepository) {
         this.prenotazioniRepository = prenotazioniRepository;
+        this.prenotazioniNamedQueryRepository= prenotazioniNamedQueryRepository;
     }
         
 	@RequestMapping(value = "/aggiungi/{stazione}/{batteria}/{citta}/{latitudine}/{longitudine}")
@@ -27,7 +35,9 @@ public class BookABatteryController {
 		
 		
 		prenotazioniRepository.saveAndFlush(prenotaBatteria);
-			
+		
+		
+		
 	    return prenotaBatteria;
 	    
 	}
@@ -35,6 +45,14 @@ public class BookABatteryController {
 	@RequestMapping(value = "/lista")
 	public List<Booking> listaPrenotazioni() {
 				
+		return prenotazioniRepository.findAll();
+	}
+	
+	
+	@RequestMapping(value = "/updateRecord")
+	public List<Booking> updateRecord() {
+				
+		prenotazioniNamedQueryRepository.updateBooking("d657e220-3e28-4687-97bd-57e8eb63e5b7");
 		return prenotazioniRepository.findAll();
 	}
 		
