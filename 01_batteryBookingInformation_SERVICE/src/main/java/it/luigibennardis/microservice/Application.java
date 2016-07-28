@@ -36,7 +36,8 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 
 //@EnableDiscoveryClient //***AGGIUNTO PER EUREKA
 @SpringBootApplication
-//@EnableScheduling
+@EnableScheduling
+//@EnableBinding(Source.class)
 public class Application {
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);

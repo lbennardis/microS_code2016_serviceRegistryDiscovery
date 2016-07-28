@@ -51,12 +51,13 @@ public class Application {
 	
 	@StreamListener(Sink.INPUT)
 	public void loggerSink(List <Booking> bookInfo) {
-				
+		
+		//check not null
 		WriteReturnTopic  service = context.getBean(WriteReturnTopic.class);
 		
 		Iterator<Booking> iterator = bookInfo.iterator();
 						
-		int i = 0;
+		 
 		while(iterator.hasNext()){
 			Object obj = iterator.next();
 					
