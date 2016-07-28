@@ -9,6 +9,7 @@ import javax.sql.DataSource;
 
 
 
+
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +24,6 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
 //import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Profile;
-
 import org.springframework.cloud.stream.annotation.EnableBinding;
 import org.springframework.cloud.stream.messaging.Source;
 import org.springframework.integration.annotation.InboundChannelAdapter;
@@ -31,10 +31,12 @@ import org.springframework.integration.annotation.Poller;
 import org.springframework.integration.core.MessageSource;
 import org.springframework.integration.support.MessageBuilder;
 import org.springframework.jdbc.datasource.SimpleDriverDataSource;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 
 //@EnableDiscoveryClient //***AGGIUNTO PER EUREKA
 @SpringBootApplication
+@EnableScheduling
 //@EnableBinding(Source.class)
 public class Application {
     public static void main(String[] args) {
