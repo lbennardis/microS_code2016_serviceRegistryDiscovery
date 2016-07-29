@@ -1,7 +1,13 @@
+MONGO DB 
 
-CREATE USER 'bbi_USER'@'localhost' IDENTIFIED BY 'bbi_USER';
-CREATE DATABASE IF NOT EXISTS batteryBookingInformation_DB;
-GRANT ALL ON batteryBookingInformation_DB.* TO 'bbi_USER'@'localhost';
+
+
+C:\runtime\mongodb-win32-i386-2.0.6\bin>
+
+
+mongod --dbpath=C:\runtime\mongodb-win32-i386-2.0.6\bin\data\db
+
+ 
 
 
 
@@ -16,21 +22,4 @@ http://localhost:8080/batterie/search/findBystazione?stazione=STA002
 http://sdpsvrsa094:7111/batterie/search/findBystazione?stazione=STA002
 
 http://localhost:8080/prenotazioni/aggiungi/STAZ001/BATT001/ROMA/42/16
-
- drop database bookABattery_DB  
- create database bookABattery_DB 
- 
- create database bookABattery_DB
- drop database bookABattery_DB  
- 
- 
-SELECT id, bookingstate,TIMESTAMPDIFF(SECOND, tscreation, NOW() )  FROM Booking ;
- 
-SELECT id, tscreation FROM Booking WHERE TIMESTAMPDIFF(SECOND, tscreation, '2010-11-29 13:16:55') >100
-SELECT id, '2016-07-28 13:16:55',tscreation FROM Booking WHERE TIMESTAMPDIFF(YEAR, tscreation, '2016-07-28 13:16:55') <5;
-SELECT id, tscreation FROM Booking , TIMESTAMPDIFF(SECOND, tscreation, CURRENT_TIMESTAMP) ;
-UPDATE Booking  set bookingstate = 'PENDING' WHERE id = 'd657e220-3e28-4687-97bd-57e8eb63e5b7';
-
-SELECT id, tscreation, NOW() as oralocale , TIMESTAMPDIFF(SECOND, b.tscreation, NOW() ) FROM Booking b ;
-SELECT id, tscreation, NOW() as oralocale ,TIMESTAMPDIFF(SECOND, b.tscreation, NOW() )  FROM Booking b WHERE TIMESTAMPDIFF(SECOND, b.tscreation, NOW() )>180;
  

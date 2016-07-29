@@ -1,7 +1,10 @@
 package it.luigibennardis.microservice;
  
 import it.luigibennardis.microservice.domain.Booking;
+import it.luigibennardis.microservice.mongodb.repositories.IDetailedReservation;
+import it.luigibennardis.microservice.mongodb.service.MongoDbService;
 import it.luigibennardis.microservice.repositories.IBookingInfoRepository;
+import it.luigibennardis.microservice.service.BookingService;
 
 import javax.sql.DataSource;
 
@@ -14,6 +17,10 @@ import javax.sql.DataSource;
 
 
 
+
+
+
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
@@ -27,7 +34,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  
  
 import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
-
+import org.springframework.context.ApplicationContext;
 //import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Profile;
@@ -41,20 +48,40 @@ import org.springframework.integration.core.MessageSource;
 import org.springframework.integration.support.MessageBuilder;
 import org.springframework.jdbc.datasource.SimpleDriverDataSource;
 import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.scheduling.annotation.Scheduled;
 
 
-//@EnableDiscoveryClient //***AGGIUNTO PER EUREKA
 @SpringBootApplication
-//@EnableScheduling
 @EnableBinding(Sink.class)
 public class Application {
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
     }
     
+    
+      
+    
+        
+        
+    
+    @Autowired
+	private ApplicationContext context;
+		
+    
+    
   //***READ FROM RETURN TOPIC 
   	@StreamListener(Sink.INPUT)
   	public void loggerSink(List <Booking> bookInfo) {
+  		
+  		
+  	      
+  	        
+  	   MongoDbService  service = context.getBean(MongoDbService.class);
+  	        
+  	 service.testMongo();
+  		
+  		
+  		
   		
   		//check not null
   		//WriteReturnTopic  service = context.getBean(WriteReturnTopic.class);
@@ -69,7 +96,7 @@ public class Application {
   			ArrayList<String> appo = 	(ArrayList<String>) obj;
   			
   			//***CHECK AVAILABLE FUNDS 
-  			System.out.println("read  ->" + appo.get(0));
+  			System.out.println("read  from timerTopic->" + appo.get(0));
   			
   			
   			//service.writeOnReturnTopic(obj.toString());
@@ -78,6 +105,8 @@ public class Application {
   			 
   	           
   		}
+  		
+  		
   		
   		
   			

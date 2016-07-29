@@ -170,7 +170,11 @@
         	<version>2.1.5</version>
         </dependency>
         
-        
+        <!--MONGO DB SUPPORTO -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-mongodb</artifactId>
+        </dependency>
         
         <!--
         <dependency>
