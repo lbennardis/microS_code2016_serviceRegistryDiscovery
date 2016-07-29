@@ -7,11 +7,13 @@ import org.springframework.messaging.MessageChannel;
 import org.springframework.messaging.SubscribableChannel;
 
 public interface Sink {
-	
-		String INPUT_REQUEST = "timerTopic";
+		 
+		String INPUT_REQUEST = "confirmBookingTopic";
 
 		@Input(Sink.INPUT_REQUEST)
-		SubscribableChannel timerTopic();
+		SubscribableChannel confirmBookingTopic();
+		 
+		
 		
 		/*
 		String INPUT_CONFIRM = "confirmBookingTopic";

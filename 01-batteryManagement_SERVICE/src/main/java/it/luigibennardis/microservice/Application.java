@@ -14,6 +14,7 @@ import it.luigibennardis.microservice.model.Booking;
 
 
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -48,7 +49,7 @@ public class Application {
     	  	
 		
 		
-	
+	//***READ FROM RETURN TOPIC 
 	@StreamListener(Sink.INPUT)
 	public void loggerSink(List <Booking> bookInfo) {
 		
@@ -65,6 +66,7 @@ public class Application {
 			ArrayList<String> appo = 	(ArrayList<String>) obj;
 			
 			//***CHECK AVAILABLE FUNDS 
+			System.out.println("read  ->" + appo.get(0));
 			
 			
 			//service.writeOnReturnTopic(obj.toString());

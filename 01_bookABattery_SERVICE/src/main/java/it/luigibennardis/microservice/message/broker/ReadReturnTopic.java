@@ -31,7 +31,7 @@ import org.springframework.stereotype.Component;
 @Component
 @EnableBinding(Sink.class)
 public class ReadReturnTopic {
-	
+	//ciccio
 	@Autowired
 	private ApplicationContext context;
 	

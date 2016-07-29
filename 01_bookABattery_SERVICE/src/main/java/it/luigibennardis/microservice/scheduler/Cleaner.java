@@ -30,7 +30,7 @@ public class Cleaner {
         
         BookingService  service = context.getBean(BookingService.class);
     	
-    	service.updateExpiredPendingBooking();
+    	//service.updateExpiredPendingBooking();
     }
 }
 

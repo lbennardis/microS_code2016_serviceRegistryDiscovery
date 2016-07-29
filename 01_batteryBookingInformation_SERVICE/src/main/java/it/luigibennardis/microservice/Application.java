@@ -1,5 +1,6 @@
 package it.luigibennardis.microservice;
-
+ 
+import it.luigibennardis.microservice.domain.Booking;
 import it.luigibennardis.microservice.repositories.IBookingInfoRepository;
 
 import javax.sql.DataSource;
@@ -10,7 +11,13 @@ import javax.sql.DataSource;
 
 
 
+
+
+
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -25,6 +32,8 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Profile;
 import org.springframework.cloud.stream.annotation.EnableBinding;
+import org.springframework.cloud.stream.annotation.StreamListener;
+import org.springframework.cloud.stream.messaging.Sink;
 import org.springframework.cloud.stream.messaging.Source;
 import org.springframework.integration.annotation.InboundChannelAdapter;
 import org.springframework.integration.annotation.Poller;
@@ -36,14 +45,44 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 
 //@EnableDiscoveryClient //***AGGIUNTO PER EUREKA
 @SpringBootApplication
-@EnableScheduling
-//@EnableBinding(Source.class)
+//@EnableScheduling
+@EnableBinding(Sink.class)
 public class Application {
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
     }
     
-       
+  //***READ FROM RETURN TOPIC 
+  	@StreamListener(Sink.INPUT)
+  	public void loggerSink(List <Booking> bookInfo) {
+  		
+  		//check not null
+  		//WriteReturnTopic  service = context.getBean(WriteReturnTopic.class);
+  		
+  		Iterator<Booking> iterator = bookInfo.iterator();
+  						
+  		 
+  		while(iterator.hasNext()){
+  			Object obj = iterator.next();
+  					
+  			@SuppressWarnings("unchecked")
+  			ArrayList<String> appo = 	(ArrayList<String>) obj;
+  			
+  			//***CHECK AVAILABLE FUNDS 
+  			System.out.println("read  ->" + appo.get(0));
+  			
+  			
+  			//service.writeOnReturnTopic(obj.toString());
+  			//service.writeOnReturnTopic(appo.get(0));
+  			
+  			 
+  	           
+  		}
+  		
+  		
+  			
+  	}
+  		
     /*
     @Bean
 	@InboundChannelAdapter(value = Source.OUTPUT, poller = @Poller(fixedDelay = "10000", maxMessagesPerPoll = "1"))

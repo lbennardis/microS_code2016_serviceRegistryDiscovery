@@ -13,5 +13,3 @@ public interface IKafkaChannels {
 	    @Output("confirmBookingTopic")
 	    MessageChannel writeTopic();
 }
-
- 
