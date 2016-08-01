@@ -5,10 +5,10 @@ package it.luigibennardis.microservice.web;
  
 import it.luigibennardis.microservice.domain.StationAddress;
  
-import it.luigibennardis.microservice.domain.Booking;
+ 
 import it.luigibennardis.microservice.domain.Users;
 import it.luigibennardis.microservice.repositories.IStationAddressRepository;
-import it.luigibennardis.microservice.repositories.IBookingInfoRepository;
+ 
 import it.luigibennardis.microservice.repositories.StazioniNamedQueryRepository;
 
 import java.util.Iterator;

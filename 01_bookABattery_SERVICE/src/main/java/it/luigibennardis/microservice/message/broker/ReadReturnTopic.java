@@ -50,7 +50,7 @@ public class ReadReturnTopic {
 		
     	
     	//***UPDATE 
-    	//service.updatePendingBooking(message.getPayload().getIdReservation());
+    	service.updatePendingBooking(message.getPayload().getIdReservation());
     	
     }
         

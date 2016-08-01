@@ -1,23 +1,11 @@
 package it.luigibennardis.microservice;
  
-import it.luigibennardis.microservice.domain.Booking;
+ 
 import it.luigibennardis.microservice.mongodb.repositories.IDetailedReservation;
 import it.luigibennardis.microservice.mongodb.service.MongoDbService;
-import it.luigibennardis.microservice.repositories.IBookingInfoRepository;
-import it.luigibennardis.microservice.service.BookingService;
+ 
 
 import javax.sql.DataSource;
-
-
-
-
-
-
-
-
-
-
-
 
 
 import java.text.SimpleDateFormat;
@@ -63,7 +51,7 @@ public class Application {
     
         
         
-    
+    /*
     @Autowired
 	private ApplicationContext context;
 		
@@ -75,7 +63,8 @@ public class Application {
   		
   		
   	      
-  	        
+  	        @Autowired
+	private ApplicationContext context;
   	   MongoDbService  service = context.getBean(MongoDbService.class);
   	        
   	 service.testMongo();
@@ -190,14 +179,24 @@ public class Application {
       
     
   //MANDA A CONSOLE UNA VERIFICA DELL'AMBIENTE 
-     
+    
+    
+    @Autowired
+	private ApplicationContext context;
+	
     
     @Bean
     CommandLineRunner verifyEnv(
             DataSourceProperties dataSourceProps,
             @Value("${cloud.services.mySqlBackingServices.connection.jdbcurl:}") String jdbcUrl) 
     	{
-        	return args -> System.out.println("cloud.services.mySqlBackingServices.connection.jdbcurl \n\n JDBC URL=" + jdbcUrl + ".\n\n the DS URL=" + dataSourceProps.getUrl() + ".\n\n");
+        	
+    	MongoDbService  service = context.getBean(MongoDbService.class);
+    	
+   	 	service.initMongo();
+    	
+    	
+    	return args -> System.out.println("cloud.services.mySqlBackingServices.connection.jdbcurl \n\n JDBC URL=" + jdbcUrl + ".\n\n the DS URL=" + dataSourceProps.getUrl() + ".\n\n");
     	}
      	 
 }

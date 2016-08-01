@@ -83,9 +83,9 @@ public class Application {
 			service.writeOnReturnTopic(dt);
 			
 			//WRITE KO TOPIC
-			service.writeOnReturnNotConfirmTopic(dt);
+			//service.writeOnReturnNotConfirmTopic(dt);
 			
-			//service.writeOnReturnTopic(appo.get(0));
+			//service.writeOnReturnTopic(appo);
 			
 			 
 	           

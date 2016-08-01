@@ -1,8 +1,6 @@
 package it.luigibennardis.microservice.web;
 
-import it.luigibennardis.microservice.domain.Booking;
-import it.luigibennardis.microservice.repositories.IBookingInfoRepository;
-import it.luigibennardis.microservice.repositories.IBookingNamedQueryRepository;
+
 
 import java.util.List;
 
@@ -14,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping(value = "/prenotazioni")
 public class BookABatteryController {
+	/*
 	@Autowired
 	private final IBookingInfoRepository prenotazioniRepository;
 
@@ -27,15 +26,17 @@ public class BookABatteryController {
         this.prenotazioniNamedQueryRepository= prenotazioniNamedQueryRepository;
     }
         
-	 
+	 */
 			
-	@RequestMapping(value = "/lista")
-	public List<Booking> listaPrenotazioni() {
+	/*
+	 * @RequestMapping(value = "/lista")
+	 
+	public List<BookingDb> listaPrenotazioni() {
 				
 		return prenotazioniRepository.findAll();
 	}
 	
-	
+	*/
 	 
 		
 }
