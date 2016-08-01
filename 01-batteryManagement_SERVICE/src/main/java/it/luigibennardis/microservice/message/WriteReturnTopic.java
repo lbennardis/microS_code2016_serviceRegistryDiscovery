@@ -1,5 +1,7 @@
 package it.luigibennardis.microservice.message;
 
+import it.luigibennardis.microservice.model.TransactionDetails;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,8 +38,14 @@ public class WriteReturnTopic {
         this.kafkaChannel = kafkaChannel;
     }
 
-    public void writeOnReturnTopic(String idRecordToUpdate) {
-    	kafkaChannel.writeTopic().send(MessageBuilder.withPayload(idRecordToUpdate).build()); 
+        
+    public void writeOnReturnTopic(TransactionDetails dtInfo) {
+    	kafkaChannel.writeTopic().send(MessageBuilder.withPayload(dtInfo).build()); 
     	//source.output().send(MessageBuilder.withPayload("Ciao").build());
     }
+    
+    /*public void writeOnReturnTopic(String idRecordToUpdate) {
+    	kafkaChannel.writeTopic().send(MessageBuilder.withPayload(idRecordToUpdate).build()); 
+    	//source.output().send(MessageBuilder.withPayload("Ciao").build());
+    }*/
 }

@@ -8,10 +8,11 @@ import org.springframework.messaging.SubscribableChannel;
 
 public interface Sink {
 	
-		String INPUT = "confirmBookingTopic";
+	/*	
+	String INPUT = "confirmBookingTopic";
 
 		@Input(Sink.INPUT)
 		SubscribableChannel confirmBookingTopic();
 
-	
+	*/
 	}
