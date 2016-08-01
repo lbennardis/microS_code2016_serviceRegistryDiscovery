@@ -1,9 +1,5 @@
 package it.luigibennardis.microservice.message.broker;
 
-//import it.luigibennardis.microservice.message.Sink;
- 
-
-
 
 
 
@@ -29,29 +25,31 @@ import org.springframework.integration.support.MessageBuilder;
 import org.springframework.messaging.MessageChannel;
 import org.springframework.messaging.support.GenericMessage;
 import org.springframework.stereotype.Component;
+import it.luigibennardis.microservice.message.SinkNotConfirmTopic;
+
 
 @Component
-@EnableBinding(Sink.class)
-public class ReadReturnTopic {
+@EnableBinding(SinkNotConfirmTopic.class)
+public class ReadReturnNotConfirmTopic {
 	//ciccio
 	@Autowired
 	private ApplicationContext context;
 	
 	
-    @ServiceActivator(inputChannel = Sink.INPUT)
-    //public void helloHole(GenericMessage<String> message) {
-    public void helloHole(GenericMessage<TransactionDetails> message) {
-          
-    	// ok per stringhe String idToUpdate = message.getPayload().toString();
-    			
-    	System.out.println("GenericMessage getTsFoundsReservation --> "  + message.getPayload().getIdFoundsReservation());
-    	
-    	BookingService  service = context.getBean(BookingService.class);
-		
-    	
-    	//***UPDATE 
-    	//service.updatePendingBooking(message.getPayload().getIdReservation());
-    	
-    }
+  @ServiceActivator(inputChannel = SinkNotConfirmTopic.INPUT_NOT_CONFIRM_TOPIC)
+  //public void helloHole(GenericMessage<String> message) {
+  public void helloHole(GenericMessage<TransactionDetails> message) {
         
+  	// ok per stringhe String idToUpdate = message.getPayload().toString();
+  			
+  	System.out.println("GenericMessage NOT CONFIRMED TOPIC getTsFoundsReservation --> "  + message.getPayload().getIdFoundsReservation());
+  	
+  	BookingService  service = context.getBean(BookingService.class);
+		
+  	
+  	//***UPDATE 
+  	service.updateNotConfirmedBooking(message.getPayload().getIdReservation());
+  	
+  }
+      
 }

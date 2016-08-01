@@ -10,6 +10,12 @@ public interface IKafkaChannels {
 		//@Input("timerTopic")
 	    //SubscribableChannel readTopic();
 
-	    @Output("confirmBookingTopic")
-	    MessageChannel writeTopic();
+	@Output("confirmBookingTopic")
+    MessageChannel writeTopic();
+    
+	@Output("notConfirmBookingTopic")
+    MessageChannel writeNotConfirmTopic();
+    
+    
+	    
 }

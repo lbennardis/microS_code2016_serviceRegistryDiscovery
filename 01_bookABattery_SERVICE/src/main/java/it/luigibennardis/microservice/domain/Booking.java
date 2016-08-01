@@ -26,6 +26,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 			query="SELECT id,batterycode,stationid,city,latitude,longitude, bookingstate,tscreation, tsupdate FROM  Booking  WHERE bookingstate = 'PENDING' "),
 	@NamedQuery(name="Booking.updateBooking",
 			query="UPDATE Booking  set bookingstate = 'CONFIRMED' WHERE id = ?1"),
+	@NamedQuery(name="Booking.updateNotConfirmedBooking",
+			query="UPDATE Booking  set bookingstate = 'NOT_CONFIRMED' WHERE id = ?1"),
 	@NamedQuery(name="Booking.deleteExpiredBooking",
 			query="UPDATE Booking  set bookingstate = 'EXPIRED' WHERE (TIMESTAMPDIFF(SECOND, tscreation, NOW() )>180 AND bookingstate='PENDING')")
 	})

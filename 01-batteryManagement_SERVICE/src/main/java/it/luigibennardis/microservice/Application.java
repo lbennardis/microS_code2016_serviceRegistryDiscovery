@@ -3,6 +3,7 @@ package it.luigibennardis.microservice;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.UUID;
 
 import it.luigibennardis.microservice.message.WriteReturnTopic;
 import it.luigibennardis.microservice.model.Booking;
@@ -14,6 +15,8 @@ import it.luigibennardis.microservice.model.Booking;
 
 
 
+
+import it.luigibennardis.microservice.model.TransactionDetails;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
@@ -66,11 +69,23 @@ public class Application {
 			ArrayList<String> appo = 	(ArrayList<String>) obj;
 			
 			//***CHECK AVAILABLE FUNDS 
-			System.out.println("read  ->" + appo.get(0));
-			
+			System.out.println("READ   					->" + appo.get(0));
+			System.out.println("CHECK AVAILABLE FUNDS   ->" + appo.get(0));
 			
 			//service.writeOnReturnTopic(obj.toString());
-			service.writeOnReturnTopic(appo.get(0));
+			String idTransaction = UUID.randomUUID().toString();
+			java.util.Date date = new java.util.Date();
+	        java.sql.Timestamp timestamp = new java.sql.Timestamp(date.getTime());
+	        
+			TransactionDetails dt = new TransactionDetails(appo.get(0), idTransaction,timestamp );
+			
+			//WRITE OK TOPIC
+			service.writeOnReturnTopic(dt);
+			
+			//WRITE KO TOPIC
+			service.writeOnReturnNotConfirmTopic(dt);
+			
+			//service.writeOnReturnTopic(appo.get(0));
 			
 			 
 	           

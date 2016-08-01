@@ -44,4 +44,11 @@ public class BookingService {
 	    prenotazioniNamedQueryRepository.deleteExpiredBooking();;
 		
 	}
+    
+    
+    public void  updateNotConfirmedBooking(String idToUpdate) {
+		
+	    prenotazioniNamedQueryRepository.updateNotConfirmedBooking(idToUpdate);
+		
+	}
 }

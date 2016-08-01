@@ -1,7 +1,7 @@
 package it.luigibennardis.microservice.scheduler;
 
 
-import it.luigibennardis.microservice.message.Sink;
+//import //it.luigibennardis.microservice.message.Sink;
 import it.luigibennardis.microservice.service.BookingService;
 
 import java.text.SimpleDateFormat;
