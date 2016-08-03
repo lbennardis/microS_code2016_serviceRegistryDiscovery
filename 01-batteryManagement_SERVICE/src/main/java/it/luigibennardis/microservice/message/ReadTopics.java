@@ -10,7 +10,16 @@ import it.luigibennardis.microservice.model.TransactionDetails;
 
 
 
+
+
+
+
+
+
+
+
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 import java.util.UUID;
@@ -48,17 +57,67 @@ public class ReadTopics {
 	
     
     @StreamListener(IKafkaInputChannels.INPUT_PENDING_TOPIC)
-    public void readPendingTopic(GenericMessage<List <Booking>>  bookInfo) {
-    	
+    public void readPendingTopic(List <Booking>  bookInfo) {
+    	//public void readPendingTopic(GenericMessage<List <Booking>>  bookInfo) {
+    	    	    	
     	WriteReturnTopic  service = context.getBean(WriteReturnTopic.class);
 		
     	
+    	//List<Booking> listaBooking  = new ArrayList<Booking>();
+    	
+    	//System.out.println("READ   	bookInfo ->"  + bookInfo.getPayload().size());
+    	System.out.println("READ   	bookInfo ->"  + bookInfo.size());
+    	
+    	//Iterator<Booking> iterator = bookInfo.getPayload().iterator();
+    	Iterator<Booking> iterator = bookInfo.iterator();
+    	
+    	
+    	while(iterator.hasNext()){
+    		Object obj = iterator.next(); 
+    		 
+    		
+    		Object[] appo = (Object[])obj;
+    		
+    		System.out.println("VALORI ->"  + appo[0]);
+    		
+    		//List<Object> valori = Arrays.asList(obj);
+    		
+    		
+    		
+    		//System.out.println("VALORI ->"  + appo[0]);
+        	 
+    		 
+    		
+    		
+    		//List<Booking> appo  = (List<Booking>)(obj)list;
+    				
+    		//ArrayList<String> appo  = 	(ArrayList<String>) obj;
+    		
+    		//System.out.println("READ   	bookInfo ->"  + obj.getId());
+    		//@SuppressWarnings("unchecked")
+			//ArrayList<String> appo = 	(ArrayList<String>) obj;
+    		
+    		
+    		
+    		
+    		//System.out.println("READ   	bookInfo ->" +appo.toString() );
+    	}
+    	/*
+    	AccountDto accountDto = new AccountDto();
+    	accountDto.setConfidential("EXCEPTION");
+    	list.add(accountDto);
+
+    	GenericMessage<List<AccountDto>> genericMessage = new GenericMessage<List<AccountDto>>(list);
+		*/
+    	
+    	
+    	
     	//Iterator<Booking> iterator = ((List<Booking>) bookInfo).iterator();
 		
-    	System.out.println("READ   	bookInfo ->"  + bookInfo.getPayload().size());
+    	//System.out.println("READ   	bookInfo ->"  + bookInfo.getPayload().size());
     	//System.out.println("READ   	bookInfo id ->"  + bookInfo.getPayload().get(0))).getId()    );
     	
-    	/Iterator<Booking> iterator = ((List<Booking>) bookInfo).iterator();
+    	//Iterator<Booking> iterator = ((List<Booking>) bookInfo).iterator();
     	
     	//while(iterator.hasNext()){
 			//Object obj = iterator.next();
