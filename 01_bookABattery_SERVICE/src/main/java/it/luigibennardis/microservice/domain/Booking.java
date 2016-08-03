@@ -35,10 +35,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Booking {
 
-	//@GeneratedValue
 	@Id
     @JsonProperty("id")
-	private String id ; //= UUID.randomUUID().toString();
+	private String id ;  
 
     public String getId() {
         return id;

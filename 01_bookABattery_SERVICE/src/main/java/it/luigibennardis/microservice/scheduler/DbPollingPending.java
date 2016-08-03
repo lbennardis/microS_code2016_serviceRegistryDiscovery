@@ -1,25 +1,19 @@
 package it.luigibennardis.microservice.scheduler;
 
 
-//import //it.luigibennardis.microservice.message.Sink;
-import it.luigibennardis.microservice.domain.Booking;
  
+import it.luigibennardis.microservice.domain.Booking;
 import it.luigibennardis.microservice.message.broker.WritePendingTopic;
 import it.luigibennardis.microservice.service.BookingService;
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
-import org.springframework.integration.annotation.ServiceActivator;
-import org.springframework.messaging.support.GenericMessage;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 @Component
 public class DbPollingPending {
+	
 	@Autowired
 	private ApplicationContext context;
 	

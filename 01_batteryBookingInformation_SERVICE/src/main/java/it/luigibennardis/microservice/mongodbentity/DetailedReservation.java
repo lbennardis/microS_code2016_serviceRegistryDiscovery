@@ -55,7 +55,6 @@ public class DetailedReservation {
         this.state = state;
     }
     
-
     @Override
     public String toString() {
         return String.format(

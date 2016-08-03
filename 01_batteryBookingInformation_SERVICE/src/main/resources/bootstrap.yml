@@ -1,3 +1,3 @@
 spring:
   application:
-    name: 00-batteryService
+    name: 01-batteryBookingInformation_SERVICE

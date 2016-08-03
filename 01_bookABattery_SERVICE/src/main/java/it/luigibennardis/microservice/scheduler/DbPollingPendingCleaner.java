@@ -15,7 +15,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 @Component
-public class Cleaner {
+public class DbPollingPendingCleaner {
 	@Autowired
 	private ApplicationContext context;
 	
@@ -25,7 +25,7 @@ public class Cleaner {
     @Scheduled(fixedRate = 25000)
     public void sendMailToCustomers() {
 
-        //System.out.println("CLEANER PENDING Job ran at " + dateFormat.format(new Date()));
+        System.out.println("DbPollingPendingCleaner Job -> " + dateFormat.format(new Date()));
         
         BookingService  service = context.getBean(BookingService.class);
     	

@@ -1,14 +1,14 @@
 ---
 applications:
-  - name: 00-batteryService
+  - name: 01-batteryBookingInformation_SERVICE
     memory: 1024M
     instances: 1
     buildpack: java_buildpack
-    host: 00-batteryService
+    host: 01-batteryBookingInformation_SERVICE
     domain: cfapps.io
-    path: target/00-batteryService-1.0.0.BUILD-SNAPSHOT.jar
+    path: target/01-batteryBookingInformation_SERVICE-1.0.0.BUILD-SNAPSHOT.jar
     services:
-     - mySqlBackingServices
+     - mongoBackingServices
     datasource:
     jpa:
     hibernate.ddl-auto: none

@@ -18,9 +18,8 @@ import org.springframework.stereotype.Component;
 
 @Component
 @EnableBinding(IKafkaInputChannels.class)
-public class ReadTopics {
-	
-	
+public class ReadInputTopic {
+		
 	
 	@Autowired
 	private ApplicationContext context;
@@ -29,7 +28,7 @@ public class ReadTopics {
     @StreamListener(IKafkaInputChannels.INPUT_PENDING_TOPIC)
     public void readPendingTopic(GenericMessage<List <Booking>>  bookInfo) {
     	    	    	
-    	WriteReturnTopic  service = context.getBean(WriteReturnTopic.class);
+    	WriteOutputTopics  service = context.getBean(WriteOutputTopics.class);
 		
     	System.out.println("READ   	bookInfo ->"  + bookInfo.getPayload().size());
     	
@@ -49,7 +48,7 @@ public class ReadTopics {
 	        
 			TransactionDetails dt = new TransactionDetails(appo[0].toString(), idTransaction,timestamp );
 			
-			//***FOR DEMO POUPOUSE ->ODD MESSAGES GOES TO CONFIRM_TOPIC, WHILE EVEN TO NOT_CONFIRM_TOPIC
+			//***FOR DEMO PURPOUSE ->ODD MESSAGES GOES TO CONFIRM_TOPIC, WHILE EVEN TO NOT_CONFIRM_TOPIC
 			if (i % 2 ==1){
 				
 				service.writeOnReturnNotConfirmTopic(dt);
