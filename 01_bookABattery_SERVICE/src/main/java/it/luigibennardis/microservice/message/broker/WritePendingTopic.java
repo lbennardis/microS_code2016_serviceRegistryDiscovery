@@ -1,5 +1,7 @@
-package it.luigibennardis.microservice.message;
+package it.luigibennardis.microservice.message.broker;
 
+import it.luigibennardis.microservice.domain.Booking;
+import it.luigibennardis.microservice.message.ISinkOutputTopic;
 import it.luigibennardis.microservice.model.TransactionDetails;
 
 import java.util.List;
@@ -19,32 +21,29 @@ import org.springframework.messaging.MessageChannel;
 import org.springframework.stereotype.Component;
 
 @Component
-@EnableBinding(IKafkaOutputChannels.class)
-public class WriteReturnTopic {
+@EnableBinding(ISinkOutputTopic.class)
+public class WritePendingTopic {
 		
 	@Autowired
-	private  IKafkaOutputChannels kafkaChannel;
+	private  ISinkOutputTopic kafkaChannel;
 	
 	
 	@Autowired
-	public WriteReturnTopic() {
+	public WritePendingTopic() {
 	}
 	
     @Autowired
-    public WriteReturnTopic(IKafkaOutputChannels kafkaChannel) {
-    	System.out.println("IKafkaChannels constructor WriteReturnTopic");
-        this.kafkaChannel = kafkaChannel;
+    public WritePendingTopic(ISinkOutputTopic kafkaChannel) {
+    	this.kafkaChannel = kafkaChannel;
     }
 
         
-    public void writeOnReturnTopic(TransactionDetails dtInfo) {
-    	kafkaChannel.writeOnReturnTopic().send(MessageBuilder.withPayload(dtInfo).build()); 
+    public void writePendingTopic(List<Booking> dtInfo) {
+    	
+    	if (!dtInfo.isEmpty()){
+    		kafkaChannel.outputPendingTopic().send(MessageBuilder.withPayload(dtInfo).build()); 
+    	}
     }
-    
-    
-    
-    public void writeOnReturnNotConfirmTopic(TransactionDetails dtInfo) {
-    	kafkaChannel.writeNotConfirmTopic().send(MessageBuilder.withPayload(dtInfo).build()); 
-    }
+   
    
 }

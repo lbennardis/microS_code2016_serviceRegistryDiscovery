@@ -6,19 +6,18 @@ import org.springframework.cloud.stream.annotation.Output;
 import org.springframework.messaging.MessageChannel;
 import org.springframework.messaging.SubscribableChannel;
 
-public interface SinkNotConfirmTopic {
+public interface ISinkConfirmTopic {
 	
-	/*	
-	String INPUT = "confirmBookingTopic";
+		
+	String INPUT_CONFIRM_TOPIC = "confirmBookingTopic";
 
-		@Input(Sink.INPUT)
-		SubscribableChannel confirmBookingTopic();
-
-	*/
+	@Input(ISinkConfirmTopic.INPUT_CONFIRM_TOPIC)
+	SubscribableChannel confirmBookingTopic();
+	
 	
 	String INPUT_NOT_CONFIRM_TOPIC = "notConfirmBookingTopic";
 
-	@Input(SinkNotConfirmTopic.INPUT_NOT_CONFIRM_TOPIC)
+	@Input(ISinkConfirmTopic.INPUT_NOT_CONFIRM_TOPIC)
 	SubscribableChannel notConfirmBookingTopic();
 	
 	}

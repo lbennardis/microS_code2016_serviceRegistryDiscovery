@@ -13,6 +13,7 @@ import it.luigibennardis.microservice.model.TransactionDetails;
 import it.luigibennardis.microservice.mongodb.service.MongoDbService;
  
 
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -23,6 +24,7 @@ import kafka.message.Message;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.cloud.stream.annotation.EnableBinding;
+import org.springframework.cloud.stream.annotation.Input;
 import org.springframework.cloud.stream.annotation.Output;
 import org.springframework.cloud.stream.annotation.StreamListener;
 import org.springframework.cloud.stream.messaging.Sink;
@@ -35,6 +37,7 @@ import org.springframework.integration.annotation.ServiceActivator;
 import org.springframework.integration.core.MessageSource;
 import org.springframework.integration.support.MessageBuilder;
 import org.springframework.messaging.MessageChannel;
+import org.springframework.messaging.SubscribableChannel;
 import org.springframework.messaging.support.GenericMessage;
 import org.springframework.stereotype.Component;
 
@@ -108,5 +111,22 @@ public class ReadTopics {
 }    
     
     
+/*String INPUT_PENDING_TOPIC = "timerTopic";
+
+	@Input(SinkTopic.INPUT_PENDING_TOPIC)
+	SubscribableChannel pendingBookingTopic();
+	
+		
+	String INPUT_CONFIRM_TOPIC = "confirmBookingTopic";
+
+	@Input(SinkTopic.INPUT_NOT_CONFIRM_TOPIC)
+	SubscribableChannel confirmBookingTopic();
+			
+	
+	String INPUT_NOT_CONFIRM_TOPIC = "notConfirmBookingTopic";
+
+	@Input(SinkTopic.INPUT_NOT_CONFIRM_TOPIC)
+	SubscribableChannel notConfirmBookingTopic();
+	*/
     
     

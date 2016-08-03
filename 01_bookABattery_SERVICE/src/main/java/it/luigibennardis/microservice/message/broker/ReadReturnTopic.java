@@ -7,6 +7,7 @@ package it.luigibennardis.microservice.message.broker;
 
 
 
+import it.luigibennardis.microservice.message.ISinkConfirmTopic;
 import it.luigibennardis.microservice.model.TransactionDetails;
 import it.luigibennardis.microservice.service.BookingService;
 
@@ -31,20 +32,18 @@ import org.springframework.messaging.support.GenericMessage;
 import org.springframework.stereotype.Component;
 
 @Component
-@EnableBinding(Sink.class)
+@EnableBinding(ISinkConfirmTopic.class)
 public class ReadReturnTopic {
-	//ciccio
 	@Autowired
 	private ApplicationContext context;
 	
 	
-    @ServiceActivator(inputChannel = Sink.INPUT)
-    //public void helloHole(GenericMessage<String> message) {
-    public void helloHole(GenericMessage<TransactionDetails> message) {
+    @ServiceActivator(inputChannel = ISinkConfirmTopic.INPUT_CONFIRM_TOPIC)
+    public void updateConfirmPending(GenericMessage<TransactionDetails> message) {
           
     	// ok per stringhe String idToUpdate = message.getPayload().toString();
     			
-    	System.out.println("GenericMessage getTsFoundsReservation --> "  + message.getPayload().getIdFoundsReservation());
+    	System.out.println("GenericMessage CONFIRMED TOPIC getTsFoundsReservation --> "  + message.getPayload().getIdFoundsReservation());
     	
     	BookingService  service = context.getBean(BookingService.class);
 		
@@ -54,4 +53,20 @@ public class ReadReturnTopic {
     	
     }
         
+	
+	  @ServiceActivator(inputChannel = ISinkConfirmTopic.INPUT_NOT_CONFIRM_TOPIC)
+	  public void updateNotConfirmPending(GenericMessage<TransactionDetails> message) {
+	        
+	  	// ok per stringhe String idToUpdate = message.getPayload().toString();
+	  			
+	  	System.out.println("GenericMessage NOT CONFIRMED TOPIC getTsFoundsReservation --> "  + message.getPayload().getIdFoundsReservation());
+	  	
+	  	BookingService  service = context.getBean(BookingService.class);
+			
+	  	
+	  	//***UPDATE 
+	  	service.updateNotConfirmedBooking(message.getPayload().getIdReservation());
+	  	
+	  }
+  
 }

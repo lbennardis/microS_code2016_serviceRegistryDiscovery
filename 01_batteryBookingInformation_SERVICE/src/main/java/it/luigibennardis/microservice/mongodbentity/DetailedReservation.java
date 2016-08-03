@@ -6,7 +6,7 @@ import org.springframework.data.annotation.Id;
 public class DetailedReservation {
   
 
-    /*
+    
 	@Id
     private String id;
 
@@ -17,7 +17,7 @@ public class DetailedReservation {
 	public void setId(String id) {
 		this.id = id;
 	}
-	*/
+	 
 	public String getIdReservation() {
 		return idReservation;
 	}
@@ -59,8 +59,8 @@ public class DetailedReservation {
     @Override
     public String toString() {
         return String.format(
-                "Detailed reservation[ idReservation='%s', idTransaction='%s', state='%s']",
-                  idReservation, idTransaction, state);
+                "Detailed reservation[ id='%s', idReservation='%s', idTransaction='%s', state='%s']",
+                  id, idReservation, idTransaction, state);
     }
 
 }

@@ -39,24 +39,18 @@ public class Application {
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
 	}
-
-	
-	
-	
 	
 	@Autowired
 	private ApplicationContext context;
-	
-		
 				
-    	  	
-		
 		
 	//***READ FROM RETURN TOPIC 
-	@StreamListener(Sink.INPUT)
+	//@StreamListener(Sink.INPUT)
 	public void loggerSink(List <Booking> bookInfo) {
 		
 		//check not null
+		
+		/*
 		WriteReturnTopic  service = context.getBean(WriteReturnTopic.class);
 		
 		Iterator<Booking> iterator = bookInfo.iterator();
@@ -89,7 +83,7 @@ public class Application {
 			
 			 
 	           
-		}
+		}*/
 		
 		
 			

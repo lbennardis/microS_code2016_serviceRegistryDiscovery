@@ -16,7 +16,7 @@ public interface SinkTopic {
 		
 	String INPUT_CONFIRM_TOPIC = "confirmBookingTopic";
 
-	@Input(SinkTopic.INPUT_NOT_CONFIRM_TOPIC)
+	@Input(SinkTopic.INPUT_CONFIRM_TOPIC)
 	SubscribableChannel confirmBookingTopic();
 			
 	
