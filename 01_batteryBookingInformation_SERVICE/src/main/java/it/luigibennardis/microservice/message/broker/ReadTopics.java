@@ -1,43 +1,16 @@
 package it.luigibennardis.microservice.message.broker;
 
 import it.luigibennardis.microservice.domain.Booking;
- 
- 
- 
 import it.luigibennardis.microservice.message.SinkTopic;
- 
-
-
- 
 import it.luigibennardis.microservice.model.TransactionDetails;
 import it.luigibennardis.microservice.mongodb.service.MongoDbService;
- 
-
-
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.UUID;
-
-import kafka.message.Message;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.cloud.stream.annotation.EnableBinding;
-import org.springframework.cloud.stream.annotation.Input;
-import org.springframework.cloud.stream.annotation.Output;
 import org.springframework.cloud.stream.annotation.StreamListener;
-import org.springframework.cloud.stream.messaging.Sink;
-import org.springframework.cloud.stream.messaging.Source;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.Bean;
-import org.springframework.integration.annotation.InboundChannelAdapter;
-import org.springframework.integration.annotation.Poller;
 import org.springframework.integration.annotation.ServiceActivator;
-import org.springframework.integration.core.MessageSource;
-import org.springframework.integration.support.MessageBuilder;
-import org.springframework.messaging.MessageChannel;
-import org.springframework.messaging.SubscribableChannel;
 import org.springframework.messaging.support.GenericMessage;
 import org.springframework.stereotype.Component;
 
@@ -81,23 +54,25 @@ public class ReadTopics {
     
     
     @StreamListener(SinkTopic.INPUT_PENDING_TOPIC)
-    public void readPendingTopic(List <Booking>  bookInfo) {
+    public void readPendingTopic(GenericMessage<List <Booking>>  bookInfo) {
     	      
 	    	
-    	System.out.println("READ   	bookInfo ->"  + bookInfo.size());
+    	//System.out.println("READ   	bookInfo ->"  + bookInfo.getPayload().size());
     	
-    	Iterator<Booking> iterator = bookInfo.iterator();
-    	
-        while(iterator.hasNext()){
+    	Iterator<Booking> iterator = bookInfo.getPayload().iterator();
+        
+    	while(iterator.hasNext()){
     		Object obj = iterator.next();
     				
-    		@SuppressWarnings("unchecked")
-    		ArrayList<String> appo = 	(ArrayList<String>) obj;
     		
-    		String bookId = appo.get(0); 
+    		Object[] appo = (Object[])obj;
+    		
+    		System.out.println("VALORI ->"  + appo[0]);
+    		
+    		String bookId =  appo[0].toString(); 
     		
     		//***CHECK AVAILABLE FUNDS 
-    		System.out.println("readPendingTopic bookId -> " + appo.get(0));
+    		System.out.println("readPendingTopic bookId -> " + bookId);
     		 		
     		MongoDbService  service = context.getBean(MongoDbService.class);
     		
@@ -109,24 +84,4 @@ public class ReadTopics {
 	}
     
 }    
-    
-    
-/*String INPUT_PENDING_TOPIC = "timerTopic";
-
-	@Input(SinkTopic.INPUT_PENDING_TOPIC)
-	SubscribableChannel pendingBookingTopic();
-	
-		
-	String INPUT_CONFIRM_TOPIC = "confirmBookingTopic";
-
-	@Input(SinkTopic.INPUT_NOT_CONFIRM_TOPIC)
-	SubscribableChannel confirmBookingTopic();
-			
-	
-	String INPUT_NOT_CONFIRM_TOPIC = "notConfirmBookingTopic";
-
-	@Input(SinkTopic.INPUT_NOT_CONFIRM_TOPIC)
-	SubscribableChannel notConfirmBookingTopic();
-	*/
-    
-    
+     
