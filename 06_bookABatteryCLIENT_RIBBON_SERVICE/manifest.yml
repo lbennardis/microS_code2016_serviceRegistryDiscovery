@@ -1,0 +1,15 @@
+---
+applications:
+- name: 05-microservice-client-ribbon
+  memory: 1024M
+  instances: 1
+  host: 05-microservice-client-ribbon
+  domain: cfapps.io
+  path: target/microservice-client-ribbon.jar
+  services:
+      - eureka-server
+
+  env:
+    SPRING_PROFILES_ACTIVE: cloud
+    DEBUG: "true"
+    debug: "true"

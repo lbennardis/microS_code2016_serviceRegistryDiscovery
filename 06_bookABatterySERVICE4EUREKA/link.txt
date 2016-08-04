@@ -1,0 +1,37 @@
+
+CREATE USER 'bab_USER'@'localhost' IDENTIFIED BY 'bab_USER';
+CREATE DATABASE IF NOT EXISTS bookABattery_DB;
+GRANT ALL ON bookABattery_DB.* TO 'bab_USER'@'localhost';
+
+
+
+
+
+http://localhost:8080/h2-console
+
+http://localhost:8080 
+
+http://localhost:8080/batterie/search/findBystazione?stazione=STA002
+
+http://sdpsvrsa094:7111/batterie/search/findBystazione?stazione=STA002
+
+http://localhost:8080/prenotazioni/aggiungi/STAZ001/BATT001/ROMA/42/16
+
+ drop database bookABattery_DB  
+ create database bookABattery_DB 
+ 
+ 
+SELECT id, bookingstate,TIMESTAMPDIFF(SECOND, tscreation, NOW() )  FROM Booking ;
+ 
+SELECT id, tscreation FROM Booking WHERE TIMESTAMPDIFF(SECOND, tscreation, '2010-11-29 13:16:55') >100
+SELECT id, '2016-07-28 13:16:55',tscreation FROM Booking WHERE TIMESTAMPDIFF(YEAR, tscreation, '2016-07-28 13:16:55') <5;
+SELECT id, tscreation FROM Booking , TIMESTAMPDIFF(SECOND, tscreation, CURRENT_TIMESTAMP) ;
+UPDATE Booking  set bookingstate = 'PENDING' WHERE id = 'd657e220-3e28-4687-97bd-57e8eb63e5b7';
+
+SELECT id, tscreation, NOW() as oralocale , TIMESTAMPDIFF(SECOND, b.tscreation, NOW() ) FROM Booking b ;
+SELECT id, tscreation, NOW() as oralocale ,TIMESTAMPDIFF(SECOND, b.tscreation, NOW() )  FROM Booking b WHERE TIMESTAMPDIFF(SECOND, b.tscreation, NOW() )>180;
+ 
+ 
+2016 - AGO
+DEPLOYED INSIDE EUREKA
+http://sdpsvrsa094.rete.testposte:7111/prenotazioni/lista
