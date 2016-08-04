@@ -1,11 +1,11 @@
 ---
 applications:
-- name: 05-microservice-client-ribbon
+- name: bookABatteryCLIENT_RIBBON_SERVICE
   memory: 1024M
   instances: 1
-  host: 05-microservice-client-ribbon
+  host: bookABatteryCLIENT_RIBBON_SERVICE
   domain: cfapps.io
-  path: target/microservice-client-ribbon.jar
+  path: target/06_bookABatteryCLIENT_RIBBON_SERVICE.jar
   services:
       - eureka-server
 
