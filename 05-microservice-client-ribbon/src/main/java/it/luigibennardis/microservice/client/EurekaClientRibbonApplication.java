@@ -110,6 +110,9 @@ public class EurekaClientRibbonApplication {
 
 
 
+
+
+
 class Anagrafica {
     private Long id;
     private String userId, cognome;
