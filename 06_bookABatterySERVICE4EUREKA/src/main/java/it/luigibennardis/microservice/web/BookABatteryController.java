@@ -4,7 +4,9 @@ import it.luigibennardis.microservice.domain.Booking;
 import it.luigibennardis.microservice.repositories.IBookingInfoRepository;
 import it.luigibennardis.microservice.repositories.IBookingNamedQueryRepository;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -56,4 +58,18 @@ public class BookABatteryController {
 		return prenotazioniRepository.findAll();
 	}
 		
+	
+	
+	
+	
+	@RequestMapping(value = "/greeting")
+	  public String greet() {
+	     
+	    List<String> greetings = Arrays.asList("Hi there", "Greetings", "Salutations");
+	    Random rand = new Random();
+
+	    int randomNum = rand.nextInt(greetings.size());
+	    return greetings.get(randomNum);
+	  }
+	
 }

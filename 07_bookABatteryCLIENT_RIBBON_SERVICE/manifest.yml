@@ -1,0 +1,15 @@
+---
+applications:
+- name: bookABatteryCLIENT_RIBBON_SERVICE
+  memory: 1024M
+  instances: 1
+  host: bookABatteryCLIENT_RIBBON_SERVICE
+  domain: cfapps.io
+  path: target/06_bookABatteryCLIENT_RIBBON_SERVICE.jar
+  services:
+      - eureka-server
+
+  env:
+    SPRING_PROFILES_ACTIVE: cloud
+    DEBUG: "true"
+    debug: "true"
