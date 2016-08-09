@@ -1,4 +1,4 @@
-package it.luigibennardis.microservice.client;
+package it.luigibennardis.microservice.clientdiscovery;
 
 import it.luigibennardis.microservice.domain.Booking;
 
@@ -29,11 +29,11 @@ import org.springframework.web.util.UriComponentsBuilder;
 @RestController
 //@EnableFeignClients
 @EnableEurekaClient
-public class EurekaClientRibbonApplication {
+public class EurekaClientDiscoveryApplication {
 	
 	
 	public static void main(String[] args) {
-		SpringApplication.run(EurekaClientRibbonApplication.class, args);
+		SpringApplication.run(EurekaClientDiscoveryApplication.class, args);
 	}
 
 	@Autowired
@@ -68,7 +68,7 @@ public class EurekaClientRibbonApplication {
         if (serviceInstance != null) {
             return String.format("http://%s:%d", serviceInstance.getHost(), serviceInstance.getPort());
         } else {
-        	return "NO INSTANCES OF LOAD BALANCING CLIENT BOOKABATTERYSERVICE4EUREKA";
+        	return "NO INSTANCES OF LOAD BALANCING SERVICE:  BOOKABATTERYSERVICE4EUREKA";
         }
 		
 			        
