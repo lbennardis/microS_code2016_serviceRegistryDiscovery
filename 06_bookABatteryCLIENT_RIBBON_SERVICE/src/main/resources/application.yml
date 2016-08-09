@@ -1,6 +1,6 @@
 spring:
   application:
-    name: microservice-client-ribbon
+    name: bookABatteryCLIENT_RIBBON_SERVICE
 
 server:
   port: 7211

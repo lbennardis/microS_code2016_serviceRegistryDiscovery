@@ -5,25 +5,30 @@ import it.luigibennardis.microservice.domain.Booking;
 import java.net.URI;
 import java.util.List;
 
-import org.apache.commons.lang.builder.ToStringBuilder;
+import javax.ws.rs.core.UriBuilder;
+ 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
-import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+ 
 import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
-import org.springframework.cloud.netflix.feign.EnableFeignClients;
-import org.springframework.http.ResponseEntity;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+ 
+import org.springframework.context.annotation.Bean;
+ 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.util.UriComponentsBuilder;
 
 
 @SpringBootApplication
-@EnableDiscoveryClient
+//@EnableDiscoveryClient
 @RestController
-@EnableFeignClients
+//@EnableFeignClients
+@EnableEurekaClient
 public class EurekaClientRibbonApplication {
 	
 	
@@ -36,8 +41,7 @@ public class EurekaClientRibbonApplication {
 	
 	@Autowired
 	LoadBalancerClient loadBalancerClient;
-	
-		
+			
 	@RequestMapping("/listDiscovery")
 	public String listDiscovery() {
        	List<ServiceInstance> instances = this.discoveryClient.getInstances("BOOKABATTERYSERVICE4EUREKA");
@@ -56,8 +60,7 @@ public class EurekaClientRibbonApplication {
 		return "NO INSTANCES OF BOOKABATTERYSERVICE4EUREKA";
 			        
 	}
-	
-	
+		
 	
 	@RequestMapping("/loadBalancerClient")
 	public String loadBalancerClient() {
@@ -71,29 +74,33 @@ public class EurekaClientRibbonApplication {
 			        
 	}
 	
+	 
 	
-	
-	
+	//LOAD BALANCER CLIENT "CLOUD.CLIENT.LOADBALANCER"
 	@Autowired
 	LoadBalancerClient loadBalancer;
 	
 	@Autowired
 	RestTemplate restTemplate;
 	
+	@Bean
+	   RestTemplate restTemplate() {
+	       return new RestTemplate();
+	   }
+	
 	@RequestMapping("/loadBalancerBooking")
-	//public ResponseEntity<List<Booking>> getBooking(){
 	public Booking[] getBooking(){
-		
+	
 		
 		ServiceInstance instance = this.loadBalancer.choose("BOOKABATTERYSERVICE4EUREKA");
-		URI uri = instance.getUri();
-	
-		 
 		
-		Booking[] listBooking = restTemplate.getForObject(uri, Booking[].class);
+		
+		URI uri = UriComponentsBuilder.fromUriString(instance.getUri().toString())
+				.path("/prenotazioni/lista").build().toUri(); 
+				
+		Booking[] listBooking = restTemplate.getForObject(uri , Booking[].class);
 		 
 		return listBooking; 
-		//return greeting.getMessage();
 		
 	}
 	
