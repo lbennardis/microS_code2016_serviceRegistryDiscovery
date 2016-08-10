@@ -46,7 +46,15 @@ public class BookABatteryController {
 			
 	@RequestMapping(value = "/lista")
 	public List<Booking> listaPrenotazioni() {
-				
+		
+		System.out.println("******************************************************************");
+		System.out.println("******************************************************************");
+		System.out.println("***********           CALLED LIST BOOKING              ***********");
+		System.out.println("******************************************************************");
+		System.out.println("******************************************************************");
+		 
+		
+		
 		return prenotazioniRepository.findAll();
 	}
 	

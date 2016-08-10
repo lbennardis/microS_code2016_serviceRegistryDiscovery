@@ -1,8 +1,3 @@
-LIST DISCOVERED SERVICE
-http://sdpsvrsa094:7112/listDiscovery
-
-BALANCED SERVICES
-http://sdpsvrsa094:7112/loadBalancerClient
-
-LIST OF ALL BOOKING
-http://sdpsvrsa094:7112/loadBalancerBooking
+LIST ALL REGISTERED BOOKING INFOS
+http://sdpsvrsa094:7112/ 
+ 
