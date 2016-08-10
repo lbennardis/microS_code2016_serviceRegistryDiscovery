@@ -1,127 +1,146 @@
 package it.luigibennardis.microservice.feignclient;
 
-import it.luigibennardis.microservice.domain.Booking;
-
-import java.net.URI;
+import java.util.Arrays;
 import java.util.List;
-
-import javax.ws.rs.core.UriBuilder;
  
+
+
+
+
+
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
- 
-import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
- 
+import org.springframework.cloud.netflix.feign.EnableFeignClients;
+import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.context.annotation.Bean;
- 
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.client.RestTemplate;
-import org.springframework.web.util.UriComponentsBuilder;
+
+
+
+
+
+
+
+import com.netflix.appinfo.InstanceInfo;
+
+import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
 
 @SpringBootApplication
-//@EnableDiscoveryClient
+@EnableDiscoveryClient
 @RestController
-//@EnableFeignClients
-@EnableEurekaClient
+@EnableFeignClients
 public class EurekaFeignClientApplication {
 	
 	
 	public static void main(String[] args) {
-		SpringApplication.run(EurekaFeignClientApplication.class, args);
+		SpringApplication.run(EurekaClientRibbonApplication.class, args);
+	}
+	
+	@Autowired
+	HelloClient client;
+
+	 
+	@RequestMapping("/ciao")
+	public String hello() {
+		return  client.hello();
+	}
+	
+	
+	 
+	@RequestMapping("/")
+	public String getGiocatore() {
+		return client.getGiocatore("LUIGI").toString() + " - " +  client.hello();
+	}
+	
+		
+	//DEVE ESSERE DICHIARATO IL SERVIZIO COME REGISTRATO SU EUREKA
+	@FeignClient("microservice-server")
+	interface HelloClient {
+		@RequestMapping(method = RequestMethod.GET, value = "/{userId}/giocatore")
+		List<Anagrafica> getGiocatore(@PathVariable("userId") String userId);
+		//@RequestMapping(value = "/", method = GET)
+		@RequestMapping(method = RequestMethod.GET, value = "/")
+		String hello();
 	}
 
-	@Autowired
-	DiscoveryClient discoveryClient;
 	
-	@Autowired
-	LoadBalancerClient loadBalancerClient;
-			
-	@RequestMapping("/listDiscovery")
-	public String listDiscovery() {
-       	List<ServiceInstance> instances = this.discoveryClient.getInstances("BOOKABATTERYSERVICE4EUREKA");
-	    String appoRit = "instances->" + instances.size() + "<BR>"; 
-       	if(instances != null && !instances.isEmpty()) {
-	    	 for(int i=0; i<instances.size();i++ ){
-	    		
-	        	ServiceInstance serviceInstance = instances.get(i);
-		        appoRit = appoRit + String.format(" http://%s:%d", serviceInstance.getHost(), serviceInstance.getPort());
-		        appoRit = appoRit + "<BR>";
-	    	 }
-	    	 return appoRit;
-	    	    
-	    	 
-	    }
-		return "NO INSTANCES OF BOOKABATTERYSERVICE4EUREKA";
-			        
-	}
-		
 	
-	@RequestMapping("/loadBalancerClient")
-	public String loadBalancerClient() {
-		ServiceInstance serviceInstance = this.loadBalancerClient.choose("BOOKABATTERYSERVICE4EUREKA");
-        if (serviceInstance != null) {
-            return String.format("http://%s:%d", serviceInstance.getHost(), serviceInstance.getPort());
-        } else {
-        	return "NO INSTANCES OF LOAD BALANCING SERVICE:  BOOKABATTERYSERVICE4EUREKA";
-        }
-		
-			        
-	}
+	
+
+	private DiscoveryClient discoveryClient;
 	
 	 
 	
-	//LOAD BALANCER CLIENT "CLOUD.CLIENT.LOADBALANCER"
-	@Autowired
-	LoadBalancerClient loadBalancer;
 	
-	@Autowired
-	RestTemplate restTemplate;
 	
-	@Bean
-	   RestTemplate restTemplate() {
-	       return new RestTemplate();
-	   }
+    protected String getServiceAddress() {
+        List<ServiceInstance> instances = this.discoveryClient.getInstances("microservice-server");
+        if(instances != null && !instances.isEmpty()) {
+            ServiceInstance serviceInstance = instances.get(0);
+            return String.format("http://%s:%d", serviceInstance.getHost(), serviceInstance.getPort());
+        }
+        throw new IllegalStateException("Unable to locate a microservice-server service");
+    }
 	
-	@RequestMapping("/loadBalancerBooking")
-	public Booking[] getBooking(){
-	
-		
-		ServiceInstance instance = this.loadBalancer.choose("BOOKABATTERYSERVICE4EUREKA");
-		
-		
-		URI uri = UriComponentsBuilder.fromUriString(instance.getUri().toString())
-				.path("/prenotazioni/lista").build().toUri(); 
-				
-		Booking[] listBooking = restTemplate.getForObject(uri , Booking[].class);
-		 
-		return listBooking; 
-		
-	}
-	
-	/*
-	 * @RequestMapping(value = "/hello", method = RequestMethod.GET)
-	    public String hello(@RequestParam(value="salutation",
-	                                        defaultValue="Hello") String salutation,
-	                        @RequestParam(value="name",
-	                                        defaultValue="Bob") String name) {
-	        URI uri = UriComponentsBuilder.fromUriString("http://message-generation/greeting")
-	            .queryParam("salutation", salutation)
-	            .queryParam("name", name)
-	            .build()
-	            .toUri();
+    
+    
+    
+    @Bean
+    CommandLineRunner init() {
+    			System.out.println(" ");
+           		System.out.println(this.getServiceAddress());
+              	System.out.println(" ");
+				return null;
+              	}
+    
+    
+}
 
-	        Greeting greeting = rest.getForObject(uri, Greeting.class);
-	        return greeting.getMessage();
-	    }
-	    */
-	
-	
+
+
+
+
+
+
+class Anagrafica {
+    private Long id;
+    private String userId, cognome;
+
+    @Override
+    public String toString() {
+        return "Anagrafica{" +
+                "id=" + id +
+                ", userId='" + userId + '\'' +
+                ", cognome='" + cognome + '\'' +
+                '}';
+    }
+
+    public Anagrafica() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+     
+    public String getCognome() {
+        return cognome;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
 }
 
 
