@@ -1,3 +1,0 @@
-http://sdpsvrsa094:7112/listDiscovery
-
-http://sdpsvrsa094:7112/loadBalancerClient
