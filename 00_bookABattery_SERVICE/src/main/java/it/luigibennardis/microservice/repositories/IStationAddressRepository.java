@@ -11,3 +11,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface IStationAddressRepository extends JpaRepository<StationAddress,Long> {
 	public List<StationAddress> findAll();
 }
+
+
