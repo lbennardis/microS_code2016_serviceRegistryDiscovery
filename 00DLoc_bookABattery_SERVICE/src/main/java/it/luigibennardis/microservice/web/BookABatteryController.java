@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(value = "/prenotazioni")
+@RequestMapping(value = "/bookABattery")
 public class BookABatteryController {
 	@Autowired
 	private final IBookingInfoRepository prenotazioniRepository;
@@ -19,7 +19,7 @@ public class BookABatteryController {
         this.prenotazioniRepository = prenotazioniRepository;
     }
         
-	@RequestMapping(value = "/aggiungi/{stazione}/{batteria}/{citta}/{latitudine}/{longitudine}")
+	@RequestMapping(value = "/addBooking/{stazione}/{batteria}/{citta}/{latitudine}/{longitudine}")
 	public Booking addBook(@PathVariable String stazione, @PathVariable String batteria,
 			 @PathVariable String citta , @PathVariable long latitudine, @PathVariable long longitudine) {
 		
@@ -31,7 +31,7 @@ public class BookABatteryController {
 	    
 	}
 			
-	@RequestMapping(value = "/lista")
+	@RequestMapping(value = "/list")
 	public List<Booking> listaPrenotazioni() {
 				
 		return prenotazioniRepository.findAll();

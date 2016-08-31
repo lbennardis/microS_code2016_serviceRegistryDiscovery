@@ -15,7 +15,11 @@ http://localhost:8080/batterie/search/findBystazione?stazione=STA002
 
 http://sdpsvrsa094:7111/batterie/search/findBystazione?stazione=STA002
 
-http://localhost:8080/prenotazioni/aggiungi/STAZ001/BATT001/ROMA/42/16
+http://localhost:8080/bookABattery/addBooking/STAZ001/BATT001/ROMA/42/16
+
+
+
+
 
  drop database batteryService  
  create database batteryService 
