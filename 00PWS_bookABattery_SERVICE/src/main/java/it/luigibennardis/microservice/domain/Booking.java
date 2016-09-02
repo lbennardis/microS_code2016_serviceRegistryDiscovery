@@ -80,7 +80,7 @@ public class Booking {
 		 
 	public String getLatitude() {
 		
-		System.out.println("latitudine" + latitude);
+		//System.out.println("latitudine" + latitude);
 		DecimalFormat myFormatter = new DecimalFormat("0000000.#####");
 		String output = myFormatter.format(latitude);
 		
@@ -93,7 +93,7 @@ public class Booking {
 
 	public String getLongitudine() {
 		
-		System.out.println("longitudine" + longitude);
+		//System.out.println("longitudine" + longitude);
 		DecimalFormat myFormatter = new DecimalFormat("0000000.#####");
 		String output = myFormatter.format(longitude);
 		
