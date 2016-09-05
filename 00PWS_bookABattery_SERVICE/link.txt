@@ -1,3 +1,7 @@
+connect bookabattery_db_pws localhost
+Show tables;
+drop table <table_name>;
+
 
 CREATE USER 'bab_USER'@'localhost' IDENTIFIED BY 'bab_USER';
 CREATE DATABASE IF NOT EXISTS bookabattery_db_pws;
@@ -6,9 +10,9 @@ GRANT ALL ON bookabattery_db_pws.* TO 'bab_USER'@'localhost';
 
 
 http://localhost:7111/bookABattery/list
-http://localhost:7111/batterie/search/findBystazione?stazione=STA002
 http://localhost:7111/bookABattery/addBooking/STAZ001/BATT001/ROMA/42/16
- 
+http://localhost:7111/batteryinventory/search/findBystazione?stationid=STA001
+
  
  deploy cloud foundry
  http://00-batteryservice.cfapps.io/bookABattery/addBooking/STAZ001/BATT001/ROMA/42/16
