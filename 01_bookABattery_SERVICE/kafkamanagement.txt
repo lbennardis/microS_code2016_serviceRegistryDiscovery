@@ -1,0 +1,55 @@
+RUNTIME
+C:\runtime\kafka_2.11-0.10.0.0\bin\windows>
+
+CREATE A TOPIC
+kafka-topics --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic confirmBookingTopic
+
+COMMAND LINE PRODUCER(WRITE TO TOPIC)
+kafka-console-producer --broker-list localhost:9092 --topic timerTopic
+
+COMMAND LINE CONSUMER(READ FROM TOPIC)
+kafka-console-consumer --zookeeper localhost:2181 --topic timerTopic --from-beginning
+
+LIST TOPICS
+kafka-topics --list --zookeeper localhost:2181
+
+DELETE TOPIC
+kafka-topics --zookeeper localhost:2181 --delete --topic timerTopic
+
+PURGE MESSAGES Temporarily update the retention time on the topic to one second then restart or update at the desired interval
+kafka-topics --zookeeper localhost:2181 --alter --topic timerTopic --config retention.ms=1000
+
+
+TOPICS
+confirmBookingTopic
+notConfirmBookingTopic
+pendingBookingTopic
+
+
+
+C:\runtime\kafka_2.11-0.10.0.0\bin\windows>
+kafka-topics --zookeeper localhost:2181 --alter --topic confirmBookingTopic --config retention.ms=1000
+
+
+C:\runtime\kafka_2.11-0.10.0.0\bin\windows>
+kafka-topics --zookeeper localhost:2181 --alter --topic notConfirmBookingTopic --config retention.ms=1000
+
+
+C:\runtime\kafka_2.11-0.10.0.0\bin\windows>
+kafka-topics --zookeeper localhost:2181 --alter --topic pendingBookingTopic --config retention.ms=1000
+
+
+
+
+
+
+DOCKERFILE
+FROM java:8
+
+MAINTAINER Luigi Bennardis <l.bennardis@email.it>
+
+ADD target/<jar_name>*.jar app.jar
+
+RUN bash -c 'touch /app.jar'
+
+ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar"]
