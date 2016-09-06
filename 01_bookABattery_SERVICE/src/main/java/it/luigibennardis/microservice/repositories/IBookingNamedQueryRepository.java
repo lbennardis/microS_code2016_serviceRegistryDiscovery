@@ -22,6 +22,10 @@ public interface IBookingNamedQueryRepository extends Repository<Booking, Long> 
 	@Transactional
 	void updateBooking(@Param(value = "id") String id);
 		
+	@Query
+	@Modifying
+	@Transactional
+	void updateQueued(@Param(value = "id") String id);
 	
 	@Query
 	@Modifying

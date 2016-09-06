@@ -29,7 +29,8 @@ public class WritePendingTopic {
     public void writePendingTopic(List<Booking> dtInfo) {
     	//***WRITE TO PENDING TOPIC ONLY IF THE LIST IS NOT EMPTY
     	if (!dtInfo.isEmpty()){
-    		kafkaChannel.outputPendingTopic().send(MessageBuilder.withPayload(dtInfo).build()); 
+    		kafkaChannel.outputPendingTopic().send(MessageBuilder.withPayload(dtInfo).build());
+    		
     	}
     }
    

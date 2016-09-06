@@ -5,6 +5,9 @@ package it.luigibennardis.microservice.scheduler;
 import it.luigibennardis.microservice.domain.Booking;
 import it.luigibennardis.microservice.message.broker.WritePendingTopic;
 import it.luigibennardis.microservice.service.BookingService;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -17,17 +20,22 @@ public class DbPollingPending {
 	@Autowired
 	private ApplicationContext context;
 	
-     
-    @Scheduled(fixedRate = 10000)
+	 private static final SimpleDateFormat dateFormat = 
+		        new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
+	 
+    @Scheduled(fixedRate = 60000)
     public void pollingPending() {
 
-        BookingService  service = context.getBean(BookingService.class);
+    	System.out.println("DbPollingPending Job -> " + dateFormat.format(new Date()));
+    	 
+    	BookingService  service = context.getBean(BookingService.class);
         WritePendingTopic  serviceTopic = context.getBean(WritePendingTopic.class);
 			
 		List <Booking>  listaItem = service.getPendingBooking();
 		
 		serviceTopic.writePendingTopic(listaItem);
-    	
+		
+		service.updateQueued(listaItem);
     }
 }
 

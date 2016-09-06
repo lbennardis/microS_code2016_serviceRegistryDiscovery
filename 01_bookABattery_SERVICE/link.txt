@@ -33,6 +33,7 @@ SELECT id, tscreation, NOW() as oralocale ,TIMESTAMPDIFF(SECOND, b.tscreation, N
  
 
 
+show tables;
 
 
 select id,bookingstate,tscreation,tsupdate from booking;

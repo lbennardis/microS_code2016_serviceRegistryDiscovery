@@ -7,7 +7,7 @@ import org.springframework.messaging.SubscribableChannel;
 public interface ISinkOutputTopic {
 	
 		
-	String OUPUT_PENDING_TOPIC = "timerTopic";
+	String OUPUT_PENDING_TOPIC = "pendingBookingTopic";
 
 	@Output(ISinkOutputTopic.OUPUT_PENDING_TOPIC)
 	SubscribableChannel outputPendingTopic();

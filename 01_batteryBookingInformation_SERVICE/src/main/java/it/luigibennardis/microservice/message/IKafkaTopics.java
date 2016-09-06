@@ -8,7 +8,7 @@ import org.springframework.messaging.SubscribableChannel;
 public interface IKafkaTopics {
 	
 		
-	String INPUT_PENDING_TOPIC = "timerTopic";
+	String INPUT_PENDING_TOPIC = "pendingBookingTopic";
 
 	@Input(IKafkaTopics.INPUT_PENDING_TOPIC)
 	SubscribableChannel pendingBookingTopic();

@@ -25,7 +25,12 @@ confirmBookingTopic
 notConfirmBookingTopic
 pendingBookingTopic
 
+COMMAND LINE listener(READ FROM TOPIC)
+cd C:\runtime\kafka_2.11-0.10.0.0\bin\windows 
 
+kafka-console-consumer --zookeeper localhost:2181 --topic pendingBookingTopic --from-beginning
+kafka-console-consumer --zookeeper localhost:2181 --topic confirmBookingTopic --from-beginning
+kafka-console-consumer --zookeeper localhost:2181 --topic notConfirmBookingTopic --from-beginning
 
 C:\runtime\kafka_2.11-0.10.0.0\bin\windows>
 kafka-topics --zookeeper localhost:2181 --alter --topic confirmBookingTopic --config retention.ms=1000

@@ -7,24 +7,13 @@
 
     <modelVersion>4.0.0</modelVersion>
 	
-	<!--
-	<parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.3.0.RELEASE</version>
-    </parent>
-    -->
-    
     <!-- SPRING CLOUD STREAM KAFKA -->
-    
-    
     <parent>
 		<groupId>org.springframework.cloud</groupId>
 		<artifactId>spring-cloud-starter-parent</artifactId>
 		<version>Brixton.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	
 	<!-- FINE SPRING CLOUD STREAM KAFKA -->
     
     
@@ -37,9 +26,6 @@
     	<docker.image.prefix>luigibennardis</docker.image.prefix>
         <java.version>1.8</java.version>
     </properties>
- 
-
-
 
     <repositories>
     	<!-- AGGIUNTO PER EUREKA -->
@@ -59,11 +45,7 @@
         
         <!-- FINE AGGIUNTO PER EUREKA --> 
         
-        
-        
-        
-        
-    </repositories>
+     </repositories>
   
     
 <!-- AGGIUNTO PER EUREKA -->
@@ -81,32 +63,34 @@
   
   
   
-  <dependencyManagement>
-    <dependencies>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-stream-dependencies</artifactId>
-            <version>1.0.2.RELEASE</version>
-            <type>pom</type>
-            <scope>import</scope>
-        </dependency>
-    </dependencies>
-</dependencyManagement>
-<dependencies>
-    <dependency>
-        <groupId>org.springframework.cloud</groupId>
-        <artifactId>spring-cloud-stream</artifactId>
-    </dependency>
-       
-    <dependency>
-        <groupId>org.springframework.cloud</groupId>
-        <artifactId>spring-cloud-starter-stream-kafka</artifactId>
-    </dependency>
-     
-     
-    
-		
-    <dependency>
+	<dependencyManagement>
+	    <dependencies>
+	        <dependency>
+	            <groupId>org.springframework.cloud</groupId>
+	            <artifactId>spring-cloud-stream-dependencies</artifactId>
+	            <version>1.0.2.RELEASE</version>
+	            <type>pom</type>
+	            <scope>import</scope>
+	        </dependency>
+	    </dependencies>
+	</dependencyManagement>
+
+
+	<dependencies>
+	    <dependency>
+	        <groupId>org.springframework.cloud</groupId>
+	        <artifactId>spring-cloud-stream</artifactId>
+	    </dependency>
+	       
+	    <dependency>
+	        <groupId>org.springframework.cloud</groupId>
+	        <artifactId>spring-cloud-starter-stream-kafka</artifactId>
+	    </dependency>
+	     
+	     
+	    
+			
+	    <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
         </dependency>
@@ -115,16 +99,8 @@
         <dependency>
             <groupId>org.flywaydb</groupId>
             <artifactId>flyway-core</artifactId>
-            <!-- <version>3.2.1</version> -->
-        </dependency>  
-         
-        <!--<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-jpa</artifactId>
-			<version>1.3.3.RELEASE</version>  
-		</dependency>-->
-        
-        	
+       	</dependency>  
+	                 	
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -143,8 +119,7 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
-        
-	
+        	
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
@@ -162,75 +137,42 @@
             <scope>test</scope>
         </dependency>
 
-
         <dependency>
         	<groupId>org.neo4j</groupId>
         	<artifactId>neo4j-cypher-compiler-2.1</artifactId>
         	<version>2.1.5</version>
         </dependency>
+               
         
-        
-        
-        <!--
         <dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-jms</artifactId>
-		</dependency>
-		-->
-	<!--	 
-<dependency>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-hornetq</artifactId>
-     
-</dependency>
--->
-		<!--
-		<dependency>
-			<groupId>org.hornetq</groupId>
-			<artifactId>hornetq-jms-server</artifactId>
-		</dependency>
-        -->
-        
-        <!-- TRANSAZIONALITA' ATOMIKOS	<version>3.9.34</version>  non funziona con flyway -->
-		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
-		 <!-- 
-		 <dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-jta-atomikos</artifactId>
+				
+		<dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter</artifactId>
+		    <exclusions>
+		        <exclusion>
+		            <groupId>org.springframework.boot</groupId>
+		            <artifactId>spring-boot-starter-logging</artifactId>
+		        </exclusion>
+		    </exclusions>
 		</dependency>
-		-->
-		 
-		
 		
 		<dependency>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter</artifactId>
-    <exclusions>
-        <exclusion>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-logging</artifactId>
-        </exclusion>
-    </exclusions>
-</dependency>
-<dependency>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-log4j</artifactId>
-</dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-log4j</artifactId>
+		</dependency>
 
-</dependencies>
+	</dependencies>
 
-   
- 
     <build>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
-            
             
             <plugin>
                 <groupId>org.springframework.boot</groupId>
