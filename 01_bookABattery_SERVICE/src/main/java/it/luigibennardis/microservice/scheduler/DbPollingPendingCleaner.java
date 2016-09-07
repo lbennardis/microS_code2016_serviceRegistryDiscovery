@@ -21,8 +21,10 @@ public class DbPollingPendingCleaner {
     @Scheduled(fixedRate = 30000)
     public void sendMailToCustomers() {
 
-        System.out.println("DbPollingPendingCleaner Job -> " + dateFormat.format(new Date()));
-        
+    	System.out.println("---------------------------------------------------------------");
+    	System.out.println("DbPollingPendingCleaner Job -> " + dateFormat.format(new Date()));
+    	System.out.println("---------------------------------------------------------------");
+    	
         BookingService  service = context.getBean(BookingService.class);
     	
         //***COMMENTED FOR DEMO POURPOUSE - PLEASE SET ENABLE 

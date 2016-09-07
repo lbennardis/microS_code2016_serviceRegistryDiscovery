@@ -26,7 +26,9 @@ public class DbPollingPending {
     @Scheduled(fixedRate = 60000)
     public void pollingPending() {
 
+    	System.out.println("----------------------------------------------------------");
     	System.out.println("DbPollingPending Job -> " + dateFormat.format(new Date()));
+    	System.out.println("----------------------------------------------------------");
     	 
     	BookingService  service = context.getBean(BookingService.class);
         WritePendingTopic  serviceTopic = context.getBean(WritePendingTopic.class);

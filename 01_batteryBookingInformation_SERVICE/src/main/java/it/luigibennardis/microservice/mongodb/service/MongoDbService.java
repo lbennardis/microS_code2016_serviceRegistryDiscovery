@@ -33,7 +33,7 @@ public class MongoDbService {
 		dtRepository.save(dtResupdate);
 		
 		for (DetailedReservation dtList : dtRepository.findAll()) {
-			System.out.println(dtList);
+			//System.out.println(dtList);
 		}
 		
     }
@@ -70,7 +70,7 @@ public class MongoDbService {
 		dtRepository.save(dtResupdate);
 		
 		for (DetailedReservation dtList : dtRepository.findAll()) {
-			System.out.println(dtList);
+			//System.out.println(dtList);
 		}
 		
 	}

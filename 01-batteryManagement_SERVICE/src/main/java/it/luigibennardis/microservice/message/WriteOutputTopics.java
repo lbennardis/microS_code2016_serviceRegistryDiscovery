@@ -21,7 +21,7 @@ public class WriteOutputTopics {
 	
     @Autowired
     public WriteOutputTopics(IKafkaOutputChannels kafkaChannel) {
-    	System.out.println("IKafkaChannels constructor WriteReturnTopic");
+    	//System.out.println("IKafkaChannels constructor WriteReturnTopic");
         this.kafkaChannel = kafkaChannel;
     }
         

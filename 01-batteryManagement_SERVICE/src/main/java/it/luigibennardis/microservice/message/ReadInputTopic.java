@@ -30,7 +30,7 @@ public class ReadInputTopic {
     	    	    	
     	WriteOutputTopics  service = context.getBean(WriteOutputTopics.class);
 		
-    	System.out.println("READ   	bookInfo ->"  + bookInfo.getPayload().size());
+    	//System.out.println("READ   	bookInfo ->"  + bookInfo.getPayload().size());
     	
     	Iterator<Booking> iterator = bookInfo.getPayload().iterator();
         
@@ -40,7 +40,7 @@ public class ReadInputTopic {
     		
     		Object[] appo = (Object[])obj;
     		
-    		System.out.println("VALORI ->"  + appo[0]);
+    		//System.out.println("VALORI ->"  + appo[0]);
     		
     		String idTransaction = UUID.randomUUID().toString();
 			java.util.Date date = new java.util.Date();

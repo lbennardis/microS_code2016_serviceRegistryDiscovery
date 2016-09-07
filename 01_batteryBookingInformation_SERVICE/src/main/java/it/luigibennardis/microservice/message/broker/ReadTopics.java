@@ -57,7 +57,7 @@ public class ReadTopics {
     				    		
     		Object[] appo = (Object[])obj;
     		
-    		System.out.println("VALORI ->"  + appo[0]);
+    		//System.out.println("VALORI ->"  + appo[0]);
     		
     		String bookId =  appo[0].toString(); 
     		 		
