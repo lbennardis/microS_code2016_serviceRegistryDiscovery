@@ -88,7 +88,7 @@ public class EurekaClientDiscoveryApplication {
 		
 		
 		URI uri = UriComponentsBuilder.fromUriString(instance.getUri().toString())
-				.path("/prenotazioni/lista").build().toUri(); 
+				.path("/bookABattery/list").build().toUri(); 
 		
 		//***SHOW INSTACE CALLED BY LOAD BALANCING 
 		System.out.println("instance uri -> " + instance.getUri().toString());
