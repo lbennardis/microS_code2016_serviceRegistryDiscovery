@@ -1,9 +1,9 @@
 spring:
   application:
-    name: bookABatteryCLIENT_RIBBON_SERVICE
+    name: 06_bookABatteryCLIENT_FEIGN_SERVICE
 
 server:
-  port: 7211
+  port: 7112
 
 eureka:
   password: password
@@ -32,6 +32,6 @@ eureka:
     serviceUrl:
      defaultZone: http://02-eureka-server.cfapps.io/eureka/
   instance:
-    hostname: 05-microservice-client-ribbon.cfapps.io
+    hostname: 06_bookABatteryCLIENT_FEIGN_SERVICE.cfapps.io
     leaseRenewalIntervalInSeconds: 5
     nonSecurePort: 80

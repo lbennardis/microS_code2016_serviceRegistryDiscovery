@@ -1,3 +1,3 @@
 spring:
   application:
-    name: microservice-client-ribbon
+    name: 06_bookABatteryCLIENT_FEIGN_SERVICE

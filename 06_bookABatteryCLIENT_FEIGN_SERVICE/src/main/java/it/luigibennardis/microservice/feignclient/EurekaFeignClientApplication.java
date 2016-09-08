@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import it.luigibennardis.microservice.domain.Booking;
+
 
 @SpringBootApplication
 @EnableDiscoveryClient //REGISTER TO EUREKA
@@ -27,24 +29,19 @@ public class EurekaFeignClientApplication {
 	@FeignClient("BOOKABATTERYSERVICE4EUREKA")
 	interface IServiceBookAbattery {
 				
-		@RequestMapping(method = RequestMethod.GET, value = "/prenotazioni/lista")
+		@RequestMapping(method = RequestMethod.GET, value = "/bookABattery/list")
 		List<Booking> getBookingList();
-				
-		/*
-		@RequestMapping(method = RequestMethod.GET, value = "/{userId}/user")
-		List<Anagrafica> getDetailedBook(@PathVariable("userId") String userId);
-		*/ 
-		 
+				 
 	} 
 			
 	@Autowired
 	IServiceBookAbattery client;
-		 
+	 	 
 	@RequestMapping("/")
-	public List<Booking> getGiocatore() {
+	public List<Booking> getBookingList() {
 		return client.getBookingList();
 	}
-	
+	 
 	
 }
 
