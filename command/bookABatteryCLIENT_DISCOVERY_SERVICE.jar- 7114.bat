@@ -1,0 +1,2 @@
+cd C:\development\microS_code2016_serviceRegistryDiscovery\06_bookABatteryCLIENT_DISCOVERY_SERVICE\target\
+java -jar bookABatteryCLIENT_DISCOVERY_SERVICE.jar --server.port=7114
