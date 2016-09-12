@@ -31,9 +31,9 @@ public class BookABatteryController {
         
 	@RequestMapping(value = "/addBooking/{stazione}/{batteria}/{citta}/{latitudine}/{longitudine}")
 	public Booking addBook(@PathVariable String stazione, @PathVariable String batteria,
-			 @PathVariable String citta , @PathVariable long latitudine, @PathVariable long longitudine) {
+			 @PathVariable String citta , @PathVariable String latitudine, @PathVariable String longitudine) {
 		
-		Booking prenotaBatteria = new Booking(stazione + batteria,stazione,citta,latitudine,longitudine,"PENDING");
+		Booking prenotaBatteria = new Booking(stazione + batteria,stazione,citta,Double.valueOf(latitudine),Double.valueOf(longitudine),"PENDING");
 		
 		
 		prenotazioniRepository.saveAndFlush(prenotaBatteria);

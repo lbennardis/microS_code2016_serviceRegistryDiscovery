@@ -37,7 +37,7 @@ public class UsersController {
     }
     
     
-    @RequestMapping(method = RequestMethod.GET, value = "/indirizzi")
+    @RequestMapping(method = RequestMethod.GET, value = "/stationAddresses")
     ResponseEntity<List<StationAddress>> listaIndirizzi() {
         
     	List<StationAddress> indirizzi = indirizziRepository.findAll();
@@ -50,11 +50,13 @@ public class UsersController {
     }
     
     
-    @RequestMapping(method = RequestMethod.GET, value = "/trovaStazionePiuVicina/{latitudine}/{longitudine}/{distanza}")
-    ResponseEntity<List<StationAddress>> trovaStazionepiuVicina(@PathVariable long latitudine,
-    		@PathVariable long longitudine, long distanza) {
-        
-    	List<StationAddress> indirizzi = stazioniRepository.findNearest(latitudine,longitudine,Double.valueOf(distanza));
+    @RequestMapping(method = RequestMethod.GET, value = "/findNearestStation/{latitudine}/{longitudine}/{distanza}")
+    ResponseEntity<List<StationAddress>> trovaStazionepiuVicina(
+    		@PathVariable String latitudine,
+    		@PathVariable String longitudine, 
+    		@PathVariable String distanza) {
+    	        
+    	List<StationAddress> indirizzi = stazioniRepository.findNearest(Double.valueOf(latitudine), Double.valueOf(longitudine), Double.valueOf(distanza));
     	
     	//return new ResponseEntity<>(result, HttpStatus.CREATED);
         

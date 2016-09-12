@@ -10,8 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.NamedQuery;
 
 @Entity
-@NamedQuery(name="StationAddress.findNearest",query="SELECT stationid,address,city,latitude,longitude,3956 * 2 * (ASIN(SQRT(POWER(SIN((?1 - abs(latitude)) * pi()/180/2),2)+ COS(?1 * pi()/180 )*COS(abs(latitude) *  pi()/180)*POWER (SIN((?2 - longitude)) *  pi()/180/2, 2)))) AS distance FROM StationAddress WHERE (3956 * 2 * (ASIN(SQRT(POWER(SIN((?1 - abs(latitude)) * pi()/180/2),2)+ COS(?1 * pi()/180 )*COS(abs(latitude) *  pi()/180)*POWER (SIN((?2 - longitude)) *  pi()/180/2, 2))))) < ?3 ")
-
+@NamedQuery(name="StationAddress.findNearest",query="SELECT stationid,address,city,latitude,longitude,3956 * 2 * (ASIN(SQRT(POWER(SIN((?1 - abs(latitude)) * pi()/180/2),2)+ COS(?1 * pi()/180 )*COS(abs(latitude) *  pi()/180)*POWER (SIN((?2 - longitude)) *  pi()/180/2, 2)))) AS distance FROM StationAddress WHERE (3956 * 2 * (ASIN(SQRT(POWER(SIN((?1 - abs(latitude)) * pi()/180/2),2)+ COS(?1 * pi()/180 )*COS(abs(latitude) *  pi()/180)*POWER (SIN((?2 - longitude)) *  pi()/180/2, 2))))) < ?3 ORDER BY distance")
 
 public class StationAddress implements Serializable{ 
 	
@@ -30,7 +29,18 @@ public class StationAddress implements Serializable{
 	@Column(name="longitude")
 	Double longitude;
 	
-		
+	//@Column(name="distanza",insertable = false, updatable = false)
+    //long distanza; /*Virtual column for user responds*/ length = 25, 
+	
+	/*
+	@Column(name = "distanza", insertable = false, updatable = false)
+	Double distanza;
+	
+	public Double getDistanza() {
+		return distanza;
+	}
+	*/		
+	
 	public String getStationId() {
 		return stationid;
 	}
@@ -57,7 +67,7 @@ public class StationAddress implements Serializable{
 
 	public String getLatitude() {
 		//return latitudine;
-		System.out.println("latitude" + latitude);
+		//System.out.println("latitude" + latitude);
 		DecimalFormat myFormatter = new DecimalFormat("###.########");
 		String output = myFormatter.format(latitude);
 		
@@ -73,7 +83,7 @@ public class StationAddress implements Serializable{
 	public String getLongitude() {
 		//return longitude;
 	
-		System.out.println("longitude" + longitude);
+		//System.out.println("longitude" + longitude);
 		DecimalFormat myFormatter = new DecimalFormat("###.########");
 		String output = myFormatter.format(longitude);
 		

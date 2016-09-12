@@ -1,4 +1,4 @@
-CREATE TABLE `stationaddress` (
+CREATE TABLE `station_address` (
   `stationid` VARCHAR(45) NOT NULL,
   `address` VARCHAR(255) NULL,
   `city` VARCHAR(45) NULL,

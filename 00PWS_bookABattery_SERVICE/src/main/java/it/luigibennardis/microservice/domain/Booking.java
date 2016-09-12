@@ -33,15 +33,15 @@ public class Booking {
     private volatile String city;
 
     @JsonProperty("latitude")
-    private long latitude;
+    private Double latitude;
 
     @JsonProperty("longitude")
-    private long longitude;
+    private Double longitude;
 
     Booking() {
     }
 
-    public Booking(String batteryCode, String stationId, String city, long latitude, long longitude) {
+    public Booking(String batteryCode, String stationId, String city, Double latitude, Double longitude) {
         this.id = UUID.randomUUID().toString();
     	this.batterycode = batteryCode;
         this.stationid = stationId;
@@ -87,7 +87,7 @@ public class Booking {
 		return output ;
 	}
 
-	public void setLatitude(long latitude) {
+	public void setLatitude(Double latitude) {
 		this.latitude = latitude;
 	}
 
@@ -100,7 +100,7 @@ public class Booking {
 		return output ;
 	}
 
-	public void setLongitude(long longitude) {
+	public void setLongitude(Double longitude) {
 		this.longitude = longitude;
 	}
 }

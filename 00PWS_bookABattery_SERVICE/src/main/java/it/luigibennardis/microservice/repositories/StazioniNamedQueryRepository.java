@@ -13,8 +13,8 @@ public interface StazioniNamedQueryRepository extends Repository<StationAddress,
 	
 	 
 	@Query 
-	public List<StationAddress> findNearest(@Param(value = "latitude") long latitude, 
-		@Param(value = "longitude") long longitude, @Param(value = "distance") Double distance );
+	public List<StationAddress> findNearest(@Param(value = "latitude") Double latitude, 
+		@Param(value = "longitude") Double longitude, @Param(value = "distance") Double distance );
 	
 	 
 	}
