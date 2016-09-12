@@ -9,13 +9,28 @@ GRANT ALL ON bookabattery_db_pws.* TO 'bab_USER'@'localhost';
 
 
 
+
+
+
+ 
+ 
+ESEMPIO RICERCA DALL'INDIRIZZO : 
+41.90231, 12.4832
+
+
+
+FIND NEAREST STATION
+http://localhost:7111/findNearestStation/41.90231/12.4832/100/
+
+
 http://localhost:7111/bookABattery/list
-http://localhost:7111/bookABattery/addBooking/STAZ001/BATT001/ROMA/42/16
+http://localhost:7111/bookABattery/addBooking/STAZ001/BATT011/ROMA/42.984545454/16.74444/
 http://localhost:7111/batteryinventory/search/findBystazione?stationid=STA001
+http://localhost:7111/bookABattery/list
 
  
  deploy cloud foundry
- http://00-batteryservice.cfapps.io/bookABattery/addBooking/STAZ001/BATT001/ROMA/42/16
+ http://00-batteryservice.cfapps.io/bookABattery/addBooking/STAZ001/BATT011/ROMA/42.984545454/16.74444/
  http://00-batteryservice.cfapps.io/bookABattery/list
  
  
