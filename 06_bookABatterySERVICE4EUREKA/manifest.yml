@@ -6,9 +6,9 @@ applications:
     buildpack: java_buildpack
     host: 06_bookABatterySERVICE4EUREKA
     domain: cfapps.io
-    path: target/06_bookABatterySERVICE4EUREKA-1.0.0.BUILD-SNAPSHOT.jar
+    path: target/bookABatterySERVICE4EUREKA-1.0.0.BUILD-SNAPSHOT.jar
     services:
-     - mySqlBackingServices
+     - MySQLEventDrivenDemo
     datasource:
     jpa:
     hibernate.ddl-auto: none

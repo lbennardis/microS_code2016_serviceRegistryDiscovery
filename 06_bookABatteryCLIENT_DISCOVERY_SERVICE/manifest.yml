@@ -3,11 +3,12 @@ applications:
 - name: 06-bookABatteryCLIENT_DISCOVERY_SERVICE
   memory: 1024M
   instances: 1
+  buildpack: java_buildpack
   host: 06-bookABatteryCLIENT_DISCOVERY_SERVICE
   domain: cfapps.io
-  path: target/bookABatteryCLIENT_RIBBON_SERVICE.jar
-  services:
-      - 02-eureka-server
+  path: target/bookABatteryCLIENT_DISCOVERY_SERVICE.jar
+  #services:
+  #    - 02-eureka-server
 
   env:
     SPRING_PROFILES_ACTIVE: cloud
