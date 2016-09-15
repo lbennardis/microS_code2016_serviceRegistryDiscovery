@@ -7,6 +7,17 @@ CREATE USER 'bab_USER'@'localhost' IDENTIFIED BY 'bab_USER';
 CREATE DATABASE IF NOT EXISTS bookabattery_db_pws;
 GRANT ALL ON bookabattery_db_pws.* TO 'bab_USER'@'localhost';
 
+
+
+FROM COMMAND LINE
+SELECT stationid,address,city,latitude,longitude,3956 * 2 * (ASIN(SQRT(POWER(SIN((41.90231 - abs(latitude)) * pi()/180/2),2)+ COS(41.90231 * pi()/180 )*COS(abs(latitude) *  pi()/180)*POWER (SIN((12.4832 - longitude)) *  pi()/180/2, 2)))) AS distance FROM station_address WHERE (3956 * 2 * (ASIN(SQRT(POWER(SIN((41.90231 - abs(latitude)) * pi()/180/2),2)+ COS(41.90231 * pi()/180 )*COS(abs(latitude) *  pi()/180)*POWER (SIN((12.4832 - longitude)) *  pi()/180/2, 2))))) < 100 ORDER BY DISTANCE;
+
+
+
+
+
+
+
 FIND NEAREST STATION
 http://00-batteryService.cfapps.io/41.90231/12.4832/100/
 http://00-batteryService.cfapps.io/mappings
