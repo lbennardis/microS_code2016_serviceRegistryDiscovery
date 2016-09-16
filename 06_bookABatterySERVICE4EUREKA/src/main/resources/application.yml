@@ -38,7 +38,7 @@ eureka:
     serviceUrl:
      defaultZone: http://02-eureka-server.cfapps.io/eureka/
   instance:
-    hostname: 06_bookABatterySERVICE4EUREKA.cfapps.io
+    hostname: 06-bookABatterySERVICE4EUREKA.cfapps.io
     leaseRenewalIntervalInSeconds: 5
     nonSecurePort: 80
   

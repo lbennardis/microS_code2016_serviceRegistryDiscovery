@@ -1,10 +1,10 @@
 ---
 applications:
-  - name: 06_bookABatterySERVICE4EUREKA
+  - name: 06-bookABatterySERVICE4EUREKA
     memory: 1024M
     instances: 1
     buildpack: java_buildpack
-    host: 06_bookABatterySERVICE4EUREKA
+    host: 06-bookABatterySERVICE4EUREKA
     domain: cfapps.io
     path: target/bookABatterySERVICE4EUREKA-1.0.0.BUILD-SNAPSHOT.jar
     services:
