@@ -51,21 +51,21 @@ public class Booking {
                 }
     
     
-	public String getBatteryCode() {
+	public String getBatterycode() {
 		return batterycode;
 	}
 	
     
 	
-	public void setBatteryCode(String batteryCode) {
+	public void setBatterycode(String batteryCode) {
 		this.batterycode = batteryCode;
 	}
 
-	public String getStationId() {
+	public String getStationid() {
 		return stationid;
 	}
 
-	public void setStationId(String stationId) {
+	public void setStationid(String stationId) {
 		this.stationid = stationId;
 	}
 
@@ -78,27 +78,39 @@ public class Booking {
 	}
 
 		 
-	public String getLatitude() {
+	/*public String getLatitude() {
 		
 		//System.out.println("latitudine" + latitude);
 		DecimalFormat myFormatter = new DecimalFormat("0000000.#####");
 		String output = myFormatter.format(latitude);
 		
 		return output ;
+	}*/
+
+	
+public Double getLatitude() {
+		
+		return latitude ;
 	}
 
 	public void setLatitude(Double latitude) {
 		this.latitude = latitude;
 	}
 
-	public String getLongitudine() {
+/*	public String getLongitude() {
 		
 		//System.out.println("longitudine" + longitude);
 		DecimalFormat myFormatter = new DecimalFormat("0000000.#####");
 		String output = myFormatter.format(longitude);
 		
 		return output ;
+	}*/
+public Double getLongitude() {
+		
+		
+		return longitude ;
 	}
+
 
 	public void setLongitude(Double longitude) {
 		this.longitude = longitude;
