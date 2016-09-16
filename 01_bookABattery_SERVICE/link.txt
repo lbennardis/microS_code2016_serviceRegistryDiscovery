@@ -1,7 +1,7 @@
 
 CREATE USER 'bab_USER'@'localhost' IDENTIFIED BY 'bab_USER';
-CREATE DATABASE IF NOT EXISTS bookABattery_DB;
-GRANT ALL ON bookABattery_DB.* TO 'bab_USER'@'localhost';
+CREATE DATABASE IF NOT EXISTS bookABattery_db_event;
+GRANT ALL ON bookABattery_db_event.* TO 'bab_USER'@'localhost';
 
 
 

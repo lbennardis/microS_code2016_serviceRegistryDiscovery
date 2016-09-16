@@ -24,5 +24,12 @@ public class BatteryInformationController {
 				
 		return dtRepository.findAll();
 	}
-		 
+	
+	@RequestMapping(value = "/deleteForDemoOnly")
+	public List<DetailedReservation> deleteMaterializedReservation() {
+				
+		dtRepository.deleteAll();
+		return dtRepository.findAll();
+		
+	}
 }
