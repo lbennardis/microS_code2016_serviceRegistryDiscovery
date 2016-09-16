@@ -24,10 +24,10 @@ public class Booking {
     private volatile String city;
 
     @JsonProperty("latitude")
-    private long latitude;
+    private Double latitude;
 
     @JsonProperty("longitude")
-    private long longitude;
+    private Double longitude;
 
     @JsonProperty("bookingstate")
     private volatile String bookingstate;
@@ -43,7 +43,7 @@ public class Booking {
     Booking() {
     }
 
-    public Booking(String batteryCode, String stationId, String city, long latitude, long longitude, String bookingstate) {
+    public Booking(String batteryCode, String stationId, String city, Double latitude, Double longitude, String bookingstate) {
         this.id = UUID.randomUUID().toString();
     	this.batterycode = batteryCode;
         this.stationid = stationId;
@@ -59,21 +59,21 @@ public class Booking {
                 }
     
     
-	public String getBatteryCode() {
+	public String getBatterycode() {
 		return batterycode;
 	}
 	
     
 	
-	public void setBatteryCode(String batteryCode) {
+	public void setBatterycode(String batteryCode) {
 		this.batterycode = batteryCode;
 	}
 
-	public String getStationId() {
+	public String getStationid() {
 		return stationid;
 	}
 
-	public void setStationId(String stationId) {
+	public void setStationid(String stationId) {
 		this.stationid = stationId;
 	}
 
@@ -86,35 +86,30 @@ public class Booking {
 	}
 
 		 
-	public String getLatitude() {
+	public Double getLatitude() {
 		
-		DecimalFormat myFormatter = new DecimalFormat("0000000.#####");
-		String output = myFormatter.format(latitude);
-		
-		return output ;
+		return latitude ;
 	}
 
-	public void setLatitude(long latitude) {
+	public void setLatitude(Double latitude) {
 		this.latitude = latitude;
 	}
 
-	public String getLongitudine() {
+	public Double getLongitude() {
 		
-		DecimalFormat myFormatter = new DecimalFormat("0000000.#####");
-		String output = myFormatter.format(longitude);
 		
-		return output ;
+		return longitude ;
 	}
 
-	public void setLongitude(long longitude) {
+	public void setLongitude(Double longitude) {
 		this.longitude = longitude;
 	}
 		
-	public String getBookingState() {
+	public String getBookingstate() {
 		return bookingstate;
 	}
 
-	public void setBookingState(String bookingstate) {
+	public void setBookingstate(String bookingstate) {
 		this.bookingstate = bookingstate;
 	}
 	
