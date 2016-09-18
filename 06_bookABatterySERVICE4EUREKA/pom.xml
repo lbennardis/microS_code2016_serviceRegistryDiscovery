@@ -20,12 +20,25 @@
     
     <!-- SPRING CLOUD STREAM KAFKA -->
     
+     <!--
+	
     
+	  
+	<parent>
+		<groupId>org.springframework.cloud</groupId>
+		<artifactId>spring-cloud-dependencies</artifactId>
+		<version>Brixton.RELEASE</version>
+		<relativePath/>  
+	</parent>
+	-->
+	
     <parent>
 		<groupId>org.springframework.cloud</groupId>
 		<artifactId>spring-cloud-starter-parent</artifactId>
-		<version>Brixton.RELEASE</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<!--  <version>Brixton.RELEASE</version> -->
+		
+		<version>Brixton.SR4</version>
+		   
 	</parent>
 	
 	<!-- FINE SPRING CLOUD STREAM KAFKA -->

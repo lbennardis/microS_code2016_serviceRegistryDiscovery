@@ -5,7 +5,7 @@ applications:
   instances: 1
   host: 02-eureka-server
   domain: cfapps.io
-  path: target/02-eureka-server.jar
+  path: target/eureka-server-1.4.0.RELEASE.jar
   env:
     SPRING_PROFILES_ACTIVE: cloud
     DEBUG: "true"
