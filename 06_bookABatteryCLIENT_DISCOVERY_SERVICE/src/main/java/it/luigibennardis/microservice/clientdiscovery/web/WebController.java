@@ -27,19 +27,19 @@ public class WebController {
 	@RequestMapping("/listDiscovery")
 	public String listDiscovery() {
        	List<ServiceInstance> instances = this.discoveryClient.getInstances("BOOKABATTERYSERVICE4EUREKA");
-	    String appoRit = "instances->" + instances.size() + "<BR>"; 
+	    String appoRit = "<h2><font color='blue'> Instances of 'BOOKABATTERYSERVICE4EUREKA' -> " + instances.size() + "</font></h2><BR>"; 
        	if(instances != null && !instances.isEmpty()) {
 	    	 for(int i=0; i<instances.size();i++ ){
 	    		
 	        	ServiceInstance serviceInstance = instances.get(i);
-		        appoRit = appoRit + String.format(" http://%s:%d", serviceInstance.getHost(), serviceInstance.getPort());
-		        appoRit = appoRit + "<BR>";
+		        appoRit = appoRit + "<h2><font color='blue'>" + String.format(" http://%s:%d", serviceInstance.getHost(), serviceInstance.getPort());
+		        appoRit = appoRit + "</font>" + "<BR>";
 	    	 }
 	    	 return appoRit;
 	    	    
 	    	 
 	    }
-		return "NO INSTANCES OF BOOKABATTERYSERVICE4EUREKA";
+		return "<h2><font color='red'>" + "Sorry... but there are no instances of <BR> BOOKABATTERYSERVICE4EUREKA" + "</font>";
 			        
 	}
 		
@@ -82,7 +82,9 @@ public class WebController {
 				.path("/bookABattery/list").build().toUri(); 
 		
 		//***SHOW INSTACE CALLED BY LOAD BALANCING 
-		System.out.println("instance uri -> " + instance.getUri().toString());
+		System.out.println("");
+		System.out.println("Instance uri -> " + instance.getUri().toString());
+		System.out.println("");
 		
 		Booking[] listBooking = restTemplate.getForObject(uri , Booking[].class);
 		 

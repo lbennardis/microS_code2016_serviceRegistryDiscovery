@@ -4,7 +4,9 @@ import it.luigibennardis.microservice.domain.Booking;
 import it.luigibennardis.microservice.repositories.IBookingInfoRepository;
 import it.luigibennardis.microservice.repositories.IBookingNamedQueryRepository;
 
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
@@ -46,12 +48,15 @@ public class BookABatteryController {
 			
 	@RequestMapping(value = "/list")
 	public List<Booking> listaPrenotazioni() {
+		String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
 		
+		System.out.println(timeStamp);
 		System.out.println("******************************************************************");
 		System.out.println("******************************************************************");
-		System.out.println("***********           CALLED LIST BOOKING              ***********");
+		System.out.println("***********           CALLED BOOKING LIST              ***********");
 		System.out.println("******************************************************************");
 		System.out.println("******************************************************************");
+		System.out.println(" ");
 		 
 		
 		
@@ -66,18 +71,5 @@ public class BookABatteryController {
 		return prenotazioniRepository.findAll();
 	}
 		
-	
-	
-	
-	
-	@RequestMapping(value = "/greeting")
-	  public String greet() {
-	     
-	    List<String> greetings = Arrays.asList("Hi there", "Greetings", "Salutations");
-	    Random rand = new Random();
-
-	    int randomNum = rand.nextInt(greetings.size());
-	    return greetings.get(randomNum);
-	  }
 	
 }
