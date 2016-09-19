@@ -7,7 +7,7 @@ server:
   
 eureka:
   password: password
- 
+#LOCAL CONF  
   client: 
     serviceUrl:
       defaultZone: http://user:${eureka.password}@localhost:8761/eureka/
@@ -21,6 +21,7 @@ eureka:
     metadataMap:
       instanceId: ${vcap.application.instance_id:${spring.application.name}:${spring.application.instance_id:${server.port}}}
 
+#PROD PWS CONF 
 #  client:
 #    serviceUrl:
 #      defaultZone: http://user:${eureka.password}@localhost:8761/eureka/
