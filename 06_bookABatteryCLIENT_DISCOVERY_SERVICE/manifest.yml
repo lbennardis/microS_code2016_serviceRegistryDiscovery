@@ -6,7 +6,7 @@ applications:
   buildpack: java_buildpack
   host: 06-bookABatteryCLIENT_DISCOVERY_SERVICE
   domain: cfapps.io
-  path: target/bookABatteryCLIENT_DISCOVERY_SERVICE.jar
+  path: target/bookABatteryCLIENT_DISCOVERY_SERVICE-1.4.0.RELEASE.jar
   #services:
   #    - 02-eureka-server
 
