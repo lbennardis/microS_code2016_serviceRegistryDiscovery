@@ -1,0 +1,50 @@
+connect bookabattery_db_pws localhost
+Show tables;
+drop table <table_name>;
+
+
+CREATE USER 'bab_USER'@'localhost' IDENTIFIED BY 'bab_USER';
+CREATE DATABASE IF NOT EXISTS bookabattery_db_pws;
+GRANT ALL ON bookabattery_db_pws.* TO 'bab_USER'@'localhost';
+
+
+
+FROM COMMAND LINE
+SELECT stationid,address,city,latitude,longitude,3956 * 2 * (ASIN(SQRT(POWER(SIN((41.90231 - abs(latitude)) * pi()/180/2),2)+ COS(41.90231 * pi()/180 )*COS(abs(latitude) *  pi()/180)*POWER (SIN((12.4832 - longitude)) *  pi()/180/2, 2)))) AS distance FROM station_address WHERE (3956 * 2 * (ASIN(SQRT(POWER(SIN((41.90231 - abs(latitude)) * pi()/180/2),2)+ COS(41.90231 * pi()/180 )*COS(abs(latitude) *  pi()/180)*POWER (SIN((12.4832 - longitude)) *  pi()/180/2, 2))))) < 100 ORDER BY DISTANCE;
+
+
+
+
+
+
+
+FIND NEAREST STATION
+http://00-batteryService.cfapps.io/41.90231/12.4832/100/
+http://00-batteryService.cfapps.io/mappings
+http://00-batteryService.cfapps.io/flyway
+http://00-batteryService.cfapps.io/bookABattery/list
+http://00-batteryService.cfapps.io/bookABattery/addBooking/STAZ001/BATT011/ROMA/42.984545454/16.74444/
+http://00-batteryService.cfapps.io/batteryinventory/search/findBystazione?stationid=STA001
+http://00-batteryService.cfapps.io/bookABattery/list
+
+
+FIND NEAREST STATION
+http://localhost:7111/findNearestStation/41.90231/12.4832/100/
+http://localhost:7111/mappings
+http://localhost:7111/flyway
+http://localhost:7111/bookABattery/list
+http://localhost:7111/bookABattery/addBooking/STAZ001/BATT011/ROMA/42.984545454/16.74444/
+http://localhost:7111/batteryinventory/search/findBystazione?stationid=STA001
+http://localhost:7111/bookABattery/list
+
+
+ 
+ deploy cloud foundry
+ http://00-batteryservice.cfapps.io/bookABattery/addBooking/STAZ001/BATT011/ROMA/42.984545454/16.74444/
+ http://00-batteryservice.cfapps.io/bookABattery/list
+ http://00-batteryservice.cfapps.io/findNearestStation/41.90231/12.4832/100/
+ 
+ 
+ 
+
+ 

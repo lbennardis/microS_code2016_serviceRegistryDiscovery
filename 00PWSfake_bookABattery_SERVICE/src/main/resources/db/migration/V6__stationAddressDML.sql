@@ -1,0 +1,12 @@
+INSERT INTO station_address VALUES('VITTORIO','Corso Vitorio Emanuele','ROMA',41.89596, 12.47767);
+INSERT INTO station_address VALUES('RIPETTA','Via di Ripetta','ROMA',41.90869, 12.47424);
+INSERT INTO station_address VALUES('GIULIA','Via Giulia','ROMA', 41.89362, 12.47054);
+INSERT INTO station_address VALUES('ZANARDELLI','Via Zanardelli','ROMA', 41.90073, 12.47245);
+INSERT INTO station_address VALUES('TRITONE','Via del Tritone','ROMA',41.90271, 12.48502);
+INSERT INTO station_address VALUES('PANTHEON','Piazza del Pantheon','ROMA',41.89857, 12.47727);
+INSERT INTO station_address VALUES('CONSOLAZIONE','Via della Conciliazione','ROMA',41.89103, 12.48253);
+INSERT INTO station_address VALUES('COLOSSEO','Piazza del Colosseo','ROMA',41.89114, 12.49198);
+INSERT INTO station_address VALUES('ACCIAIOLI','Via Acciaioli','ROMA',41.89984, 12.46473);
+INSERT INTO station_address VALUES('SEBASTIANELLO','Via San Sebastianello','ROMA',41.90815, 12.48204);
+INSERT INTO station_address VALUES('MAGNANAPOLI','Largo Magnanapoli','ROMA',41.89623, 12.48675);
+INSERT INTO station_address VALUES('PETROSELLI','Via Luigi Petroselli','ROMA',41.88835, 12.48135);
