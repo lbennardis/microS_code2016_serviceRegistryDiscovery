@@ -19,7 +19,7 @@ public class Application {
         SpringApplication.run(Application.class, args);
     }
     
-     
+      
     @Bean
     @Profile("cloudfoundry")
     DataSource dataSource(@Value("${cloud.services.mySqlBackingServices.connection.jdbcurl}") String jdbcUrl) {
@@ -34,14 +34,17 @@ public class Application {
         }
     }
     
-    
+     
     @Bean
     CommandLineRunner checkDatasource(
             DataSourceProperties dataSourceProps,
             @Value("${cloud.services.mySqlBackingServices.connection.jdbcurl:}") String jdbcUrl) 
     	{
         	return args -> System.out.println("\n\n  cloud.services.mySqlBackingServices.connection.jdbcurl JDBC URL=" + jdbcUrl + " \n\n the DATASOURCE URL=" + dataSourceProps.getUrl() + ".\n\n");
-    	}
+    	 
+    }
+     
+    
      	 
 }
 

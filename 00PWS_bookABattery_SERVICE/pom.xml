@@ -13,6 +13,8 @@
         <version>1.3.0.RELEASE</version>
     </parent>
     
+     
+	
     <groupId>it.luigibennardis</groupId>
     <artifactId>00-bookABattery_SERVICE</artifactId>
     <version>1.0.0.BUILD-SNAPSHOT</version>
