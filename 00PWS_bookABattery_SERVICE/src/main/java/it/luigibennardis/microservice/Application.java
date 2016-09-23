@@ -23,7 +23,6 @@ public class Application {
     @Bean
     @Profile("cloudfoundry")
     DataSource dataSource(@Value("${cloud.services.mySqlBackingServices.connection.jdbcurl}") String jdbcUrl) {
-    	System.out.println("\n\n Bean PROFILE CLOUD FOUNDRY");
     	
     	try {
             return new SimpleDriverDataSource(
@@ -33,8 +32,7 @@ public class Application {
             throw new RuntimeException(e) ;
         }
     }
-    
-     
+         
     @Bean
     CommandLineRunner checkDatasource(
             DataSourceProperties dataSourceProps,
