@@ -68,20 +68,20 @@ public class Booking {
         }
     
     
-	public String getBatteryCode() {
+	public String getBatterycode() {
 		return batterycode;
 	}
 	    
 	
-	public void setBatteryCode(String batteryCode) {
+	public void setBatterycode(String batteryCode) {
 		this.batterycode = batteryCode;
 	}
 
-	public String getStationId() {
+	public String getStationid() {
 		return stationid;
 	}
 
-	public void setStationId(String stationId) {
+	public void setStationid(String stationId) {
 		this.stationid = stationId;
 	}
 
@@ -120,11 +120,11 @@ public class Booking {
 		this.longitude = longitude;
 	}
 	
-	public String getBookingState() {
+	public String getBookingstate() {
 		return bookingstate;
 	}
 
-	public void setBookingState(String bookingstate) {
+	public void setBookingstate(String bookingstate) {
 		this.bookingstate = bookingstate;
 	}
 	
@@ -146,10 +146,10 @@ public class Booking {
 	
 	@Override
 	public String toString() {
-		return "booking INFO  [trabsaction id=" + this.getId() + ", batterycode=" + this.getBatteryCode() + "]";
+		return "booking INFO  [trabsaction id=" + this.getId() + ", batterycode=" + this.getBatterycode() + "]";
 	}
 	public String toXML() {
-		return "<trabsaction id=" + this.getId() + "><batterycode=" + this.getBatteryCode() + ">";
+		return "<trabsaction id=" + this.getId() + "><batterycode=" + this.getBatterycode() + ">";
 	}
 	
 }

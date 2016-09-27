@@ -23,7 +23,7 @@ public class DbPollingPending {
 	 private static final SimpleDateFormat dateFormat = 
 		        new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
 	 
-    @Scheduled(fixedRate = 60000)
+    @Scheduled(fixedRate = 30000)
     public void pollingPending() {
 
     	System.out.println("----------------------------------------------------------");

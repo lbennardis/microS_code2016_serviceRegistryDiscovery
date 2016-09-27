@@ -28,7 +28,7 @@ public class WriteOutputTopics {
     public void writeOnReturnTopic(TransactionDetails dtInfo) {
     	
     	try {
-			Thread.sleep(15000);
+			Thread.sleep(1000);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
